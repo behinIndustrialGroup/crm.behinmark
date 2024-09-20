@@ -1,0 +1,19 @@
+{
+    "name": "behin/vehicle-registration",
+    "version": "1.2",
+    "description": "",
+    "authors": [
+        {
+            "name": "mkhodroo",
+            "email": "mkhodroo@yahoo.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "BehinVehicleRegistration\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.0.2"
+    }
+}
