@@ -37,6 +37,7 @@ class ComposerStaticInit1eca8ae74d2e5fc23025091375b98a32
         'ce9671a430e4846b44e1c68c7611f9f5' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'd634523d799d97a8ab4807b650bf5cea' => __DIR__ . '/..' . '/pestphp/pest-plugin-laravel/src/Autoload.php',
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
+        'cc3b89370d0521642d96c395d46cf11a' => __DIR__ . '/../..' . '/packages/behin-init/src/app/Helpers/behin-helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -48,6 +49,10 @@ class ComposerStaticInit1eca8ae74d2e5fc23025091375b98a32
         array (
             'Whoops\\' => 7,
             'Webmozart\\Assert\\' => 17,
+        ),
+        'U' => 
+        array (
+            'UserProfile\\' => 12,
         ),
         'T' => 
         array (
@@ -175,6 +180,8 @@ class ComposerStaticInit1eca8ae74d2e5fc23025091375b98a32
         array (
             'Brick\\Math\\' => 11,
             'BehinVehicleRegistration\\' => 25,
+            'BehinUserRoles\\' => 15,
+            'BehinNgvControl\\' => 16,
             'BehinInit\\' => 10,
             'BehinFileControl\\' => 17,
         ),
@@ -196,6 +203,10 @@ class ComposerStaticInit1eca8ae74d2e5fc23025091375b98a32
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'UserProfile\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/packages/behin-user-profile/src',
         ),
         'TijsVerkoyen\\CssToInlineStyles\\' => 
         array (
@@ -542,6 +553,14 @@ class ComposerStaticInit1eca8ae74d2e5fc23025091375b98a32
         array (
             0 => __DIR__ . '/../..' . '/packages/behin-vehicle-registration/src',
         ),
+        'BehinUserRoles\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/packages/behin-user-roles/src',
+        ),
+        'BehinNgvControl\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/packages/behin-ngv-control/src',
+        ),
         'BehinInit\\' => 
         array (
             0 => __DIR__ . '/../..' . '/packages/behin-init/src',
@@ -604,6 +623,18 @@ class ComposerStaticInit1eca8ae74d2e5fc23025091375b98a32
         'BehinInit\\App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/packages/behin-init/src/App/Http/Requests/Auth/LoginRequest.php',
         'BehinInit\\App\\Models\\Access' => __DIR__ . '/../..' . '/packages/behin-init/src/App/Models/Access.php',
         'BehinInit\\BehinInitProvider' => __DIR__ . '/../..' . '/packages/behin-init/src/BehinInitProvider.php',
+        'BehinNgvControl\\App\\Http\\Controllers\\CreateNgvInfoController' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Http/Controllers/CreateNgvInfoController.php',
+        'BehinNgvControl\\App\\Http\\Controllers\\RegisterFormController' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Http/Controllers/RegisterFormController.php',
+        'BehinNgvControl\\App\\Http\\Controllers\\VehicleOwner\\VehicleOwnerFormController' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Http/Controllers/VehicleOwner/VehicleOwnerFormController.php',
+        'BehinNgvControl\\App\\Models\\NgvInfo' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Models/NgvInfo.php',
+        'BehinNgvControl\\BehinNgvControlServiceProvider' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/BehinNgvControlServiceProvider.php',
+        'BehinUserRoles\\Controllers\\GetMethodsController' => __DIR__ . '/../..' . '/packages/behin-user-roles/src/Controllers/GetMethodsController.php',
+        'BehinUserRoles\\Controllers\\GetRoleController' => __DIR__ . '/../..' . '/packages/behin-user-roles/src/Controllers/GetRoleController.php',
+        'BehinUserRoles\\Controllers\\UserController' => __DIR__ . '/../..' . '/packages/behin-user-roles/src/Controllers/UserController.php',
+        'BehinUserRoles\\Models\\Method' => __DIR__ . '/../..' . '/packages/behin-user-roles/src/Models/Method.php',
+        'BehinUserRoles\\Models\\Role' => __DIR__ . '/../..' . '/packages/behin-user-roles/src/Models/Role.php',
+        'BehinUserRoles\\Models\\User' => __DIR__ . '/../..' . '/packages/behin-user-roles/src/Models/User.php',
+        'BehinUserRoles\\UserRolesServiceProvider' => __DIR__ . '/../..' . '/packages/behin-user-roles/src/UserRolesServiceProvider.php',
         'BehinVehicleRegistration\\App\\Http\\Controllers\\UniqueIDController' => __DIR__ . '/../..' . '/packages/behin-vehicle-registration/src/App/Http/Controllers/UniqueIDController.php',
         'BehinVehicleRegistration\\App\\Http\\Controllers\\VehicleRegController' => __DIR__ . '/../..' . '/packages/behin-vehicle-registration/src/App/Http/Controllers/VehicleRegController.php',
         'BehinVehicleRegistration\\App\\Models\\VehicleRegistration' => __DIR__ . '/../..' . '/packages/behin-vehicle-registration/src/App/Models/VehicleRegistration.php',
@@ -5998,6 +6029,12 @@ class ComposerStaticInit1eca8ae74d2e5fc23025091375b98a32
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+        'UserProfile\\Controllers\\ChangePasswordController' => __DIR__ . '/../..' . '/packages/behin-user-profile/src/Controllers/ChangePasswordController.php',
+        'UserProfile\\Controllers\\GetUserAgenciesController' => __DIR__ . '/../..' . '/packages/behin-user-profile/src/Controllers/GetUserAgenciesController.php',
+        'UserProfile\\Controllers\\NationalIdController' => __DIR__ . '/../..' . '/packages/behin-user-profile/src/Controllers/NationalIdController.php',
+        'UserProfile\\Controllers\\UserProfileController' => __DIR__ . '/../..' . '/packages/behin-user-profile/src/Controllers/UserProfileController.php',
+        'UserProfile\\Models\\UserProfile' => __DIR__ . '/../..' . '/packages/behin-user-profile/src/Models/UserProfile.php',
+        'UserProfile\\UserProfileProvider' => __DIR__ . '/../..' . '/packages/behin-user-profile/src/UserProfileProvider.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Webmozart\\Assert\\InvalidArgumentException' => __DIR__ . '/..' . '/webmozart/assert/src/InvalidArgumentException.php',

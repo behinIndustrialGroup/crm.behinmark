@@ -26,10 +26,10 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- bootstrap rtl -->
-    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/dist/css/bootstrap-rtl.min.css')  . '?' . config('app.version') }}">
+    {{-- <link rel="stylesheet" href="{{ url('public/behin/behin-dist/dist/css/bootstrap-rtl.min.css')  . '?' . config('app.version') }}"> --}}
     <!-- template rtl version -->
-    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/dist/css/custom-style.css')  . '?' . config('app.version') }}">
-    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/dist/css/custom.css')  . '?' . config('app.version') }}">
+    {{-- <link rel="stylesheet" href="{{ url('public/behin/behin-dist/dist/css/custom-style.css')  . '?' . config('app.version') }}">
+    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/dist/css/custom.css')  . '?' . config('app.version') }}"> --}}
 
     {{-- <link rel="stylesheet" href="{{ url('public/behin/behin-dist/dist/css/custom.css')  . '?' . config('app.version') }}"> --}}
     <link rel="stylesheet" type="text/css" href="{{ url('public/behin/behin-dist/plugins/datatables/dataTables.bootstrap4.css')  . '?' . config('app.version') }}" />
@@ -52,14 +52,14 @@
     <script src="{{ url('public/behin/behin-js/dataTable.js')  . '?' . config('app.version') }}"></script>
     <script src="{{ url('public/behin/behin-js/dropzone.js')  . '?' . config('app.version') }}"></script>
     @yield('script_in_head')
-    
+
 </head>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-    
+
         @include('behin-layouts.header')
-    
+
         @include('behin-layouts.main-sidebar')
         <div class="content-wrapper">
             <section class="content">
@@ -92,9 +92,9 @@
         <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
         <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
         <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
-        
-        
-        
+
+
+
         <script>
 
             function initial_view(){
@@ -108,11 +108,11 @@
                 });
             }
 
-            
 
-            
 
-            
+
+
+
 
         </script>
 

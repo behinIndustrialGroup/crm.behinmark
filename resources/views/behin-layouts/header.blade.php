@@ -17,7 +17,7 @@ use App\CustomClasses\Access;
         @if (access('send-sms'))
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{ url('admin/send-sms') }}" class="nav-link btn btn-default">
-                    ارسال پیامک
+                    {{ trans('Send SMS') }}
                 </a>
             </li>
         @endif
@@ -36,7 +36,7 @@ use App\CustomClasses\Access;
     </form> --}}
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav">
         <!-- Messages Dropdown Menu -->
         {{-- <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
@@ -50,8 +50,8 @@ use App\CustomClasses\Access;
 
         @include('UserProfileViews::partial-views.user-profile-icon')
 
-        <li class="mr-4">
-            <a class="" href="{{ route('logout') }}">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}">
                 <i class="fa fa-power-off"></i>
             </a>
         </li>

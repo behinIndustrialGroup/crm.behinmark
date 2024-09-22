@@ -4,9 +4,9 @@ return [
     'menu' =>[
 
         'dashboard' => [
-            'fa_name' => 'داشبرد',
+            'fa_name' => 'Dashboard',
             'submenu' => [
-                'dashboard' => [ 'fa_name' => 'داشبرد', 'route-name' => '', 'route-url' => 'admin' ],
+                'dashboard' => [ 'fa_name' => 'Dashboard', 'route-name' => '', 'route-url' => 'admin' ],
             ]
         ],
         'cases' => [
@@ -18,19 +18,25 @@ return [
                 'draft' => [ 'fa_name' => 'پیش نویس', 'route-name' => 'MkhodrooProcessMaker.forms.draft', 'route-url' => '' ]
             ]
         ],
-        'users' => [
-            'fa_name' => 'کاربران',
+        'ngv-control' => [
+            'fa_name' => 'Ngv Control',
             'submenu' => [
-                'dashboard' => [ 'fa_name' => 'همه', 'route-name' => '', 'route-url' => 'admin/user/all' ],
-                'role' => [ 'fa_name' => 'نقش ها', 'route-name' => 'role.listForm', 'route-url' => '' ],
-                'method' => [ 'fa_name' => 'متد ها', 'route-name' => 'method.list', 'route-url' => '' ],
+                'create' => [ 'fa_name' => 'New', 'route-name' => 'ngvControl.registerForm', 'route-url' => '' ],
+            ]
+        ],
+        'users' => [
+            'fa_name' => 'Users',
+            'submenu' => [
+                'dashboard' => [ 'fa_name' => 'All', 'route-name' => '', 'route-url' => 'admin/user/all' ],
+                'role' => [ 'fa_name' => 'Roles', 'route-name' => 'role.listForm', 'route-url' => '' ],
+                'method' => [ 'fa_name' => 'Methods', 'route-name' => 'method.list', 'route-url' => '' ],
             ]
         ],
         'tickets' => [
-            'fa_name' => 'تیکت پشتیبانی',
+            'fa_name' => 'Tickets',
             'submenu' => [
-                'create' => [ 'fa_name' => 'ایجاد', 'route-name' => 'ATRoutes.index', 'route-url' => '' ],
-                'show' => [ 'fa_name' => 'مشاهده', 'route-name' => 'ATRoutes.show.listForm', 'route-url' => '' ],
+                'create' => [ 'fa_name' => 'Create', 'route-name' => 'ATRoutes.index', 'route-url' => '' ],
+                'show' => [ 'fa_name' => 'Show', 'route-name' => 'ATRoutes.show.listForm', 'route-url' => '' ],
             ]
         ],
 

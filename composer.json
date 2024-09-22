@@ -2,7 +2,10 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "php": ">=8.0.2",
@@ -29,8 +32,14 @@
             "Database\\Seeders\\": "database/seeders/",
             "BehinInit\\": "packages/behin-init/src/",
             "BehinVehicleRegistration\\": "packages/behin-vehicle-registration/src/",
-            "BehinFileControl\\": "packages/behin-file-control/src/"
-        }
+            "BehinFileControl\\": "packages/behin-file-control/src/",
+            "BehinUserRoles\\": "packages/behin-user-roles/src/",
+            "UserProfile\\": "packages/behin-user-profile/src/",
+            "BehinNgvControl\\": "packages/behin-ngv-control/src/"
+        },
+        "files": [
+            "packages/behin-init/src/app/Helpers/behin-helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -68,5 +77,4 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "platform-check": false
-
 }

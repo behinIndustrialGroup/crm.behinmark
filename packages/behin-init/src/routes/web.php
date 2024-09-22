@@ -10,11 +10,11 @@ use UserProfile\Controllers\GetUserAgenciesController;
 use UserProfile\Controllers\NationalIdController;
 use UserProfile\Controllers\UserProfileController;
 
-// Route::get('', function(){
-//     return view('auth.login');
-// });
+Route::get('', function(){
+    return view('auth.login');
+});
 
-// require __DIR__.'/auth.php';    
+require __DIR__.'/auth.php';
 
 Route::prefix('admin')->name('admin.')->middleware(['web', 'auth', Access::class])->group(function(){
     Route::get('', function(){

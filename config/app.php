@@ -2,8 +2,11 @@
 
 use BehinFileControl\BehinFileControlProvider;
 use BehinInit\BehinInitProvider;
+use BehinNgvControl\BehinNgvControlServiceProvider;
+use BehinUserRoles\UserRolesServiceProvider;
 use BehinVehicleRegistration\PackageProviders;
 use Illuminate\Support\Facades\Facade;
+use UserProfile\UserProfileProvider;
 
 return [
 
@@ -191,6 +194,9 @@ return [
         BehinInitProvider::class,
         PackageProviders::class,
         BehinFileControlProvider::class,
+        UserRolesServiceProvider::class,
+        UserProfileProvider::class,
+        BehinNgvControlServiceProvider::class,
         /*
          * Application Service Providers...
          */

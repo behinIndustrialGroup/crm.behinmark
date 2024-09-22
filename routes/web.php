@@ -1,31 +1,31 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use BehinInit\App\Http\Middleware\Access;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+use Mkhodroo\AgencyInfo\Controllers\GetAgencyController;
+use UserProfile\Controllers\ChangePasswordController;
+use UserProfile\Controllers\GetUserAgenciesController;
+use UserProfile\Controllers\NationalIdController;
+use UserProfile\Controllers\UserProfileController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('VehicleRegView::register-form');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::get('', function(){
+    return view('auth.login');
 });
 
 require __DIR__.'/auth.php';
+
+Route::prefix('admin')->name('admin.')->middleware(['web', 'auth', Access::class])->group(function(){
+    Route::get('', function(){
+        return view('admin.dashboard');
+    })->name('dashboard');
+});
+
+Route::get('build-app', function(){
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    Artisan::call('migrate');
+    return 'done';
+});
