@@ -1,0 +1,17 @@
+{
+    "name": "behin/cities",
+    "description": "",
+    "version": "1.2",
+    "autoload": {
+        "psr-4": {
+            "Behin\\Cities\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "mkhodroo",
+            "email": "mkhodroo@yahoo.com"
+        }
+    ],
+    "require": {}
+}

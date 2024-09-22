@@ -28,11 +28,13 @@
         <label for="residenceState" class="form-label">{{ trans('Residence State') }}</label>
         <select class="form-select" name="owner_residence_state" id="residenceState">
             <option value="">{{ trans('Choose state of residence') }}</option>
-            <option value="lagos">{{ trans('Lagos') }}</option>
-            <option value="abuja">{{ trans('Abuja') }}</option>
-            <option value="kano">{{ trans('Kano') }}</option>
-            <option value="rivers">{{ trans('Rivers') }}</option>
-            <!-- Add more states as needed -->
+            @php
+                $provinces = getProvincesByCountry('Nigeria');
+            @endphp
+
+            @foreach ($provinces as $item)
+                <option value="{{$item->id}}">{{$item->name}}</option>
+            @endforeach
         </select>
     </div>
 
@@ -41,6 +43,15 @@
         <input type="file" name="owner_personal_image" id="" class="form-control" accept="image/*" capture="camera">
     </div>
 
+    <div class="mb-3">
+        <label for="frontNationalCardImage" class="form-label">{{ trans('National Card Image (Front)') }}</label>
+        <input type="file" name="owner_front_national_card" id="" class="form-control" accept="image/*" capture="camera">
+    </div>
+
+    <div class="mb-3">
+        <label for="backNationalCardImage" class="form-label">{{ trans('National Card Image (Back)') }}</label>
+        <input type="file" name="owner_back_national_card" id="" class="form-control" accept="image/*" capture="camera">
+    </div>
 </form>
 <button class="btn btn-success" onclick="submit_owner_info()">{{ trans('Submit') }}</button>
 
@@ -58,4 +69,6 @@
             }
         )
     }
+    console.log('{{$provinces}}');
+
 </script>

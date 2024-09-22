@@ -6,6 +6,7 @@
 
 @php
     $uniqueId = $row->unique_id;
+    $provinces = getProvincesByCountry('Nigeria');
 @endphp
 
 @section('style')
@@ -41,9 +42,25 @@
         <input type="text" name="uniqueId" id="" class="form-control mb-3" value="{{ $row->unique_id }}" readonly>
         <button class="btn btn-primary mr-3"
             onclick="open_vehicle_owner_form('{{ $uniqueId }}')">{{ trans('Vehicle Owner Informations') }}</button>
-        <button class="btn btn-info mr-3" onclick="">{{ trans('Vehicle Informations') }}</button>
+
+        <button class="btn btn-info mr-3"
+            onclick="open_vehicle_info_form('{{ $uniqueId }}')">{{ trans('Vehicle Informations') }}</button>
+    </div>
+
+    <div class="row mt-3">
+        <fieldset>
+            <legend>
+                <label for="">{{ trans('Parts') }}</label>
+            </legend>
+            <button class="btn btn-primary mr-3"
+                onclick="open_cylinder1_form('{{ $uniqueId }}')">{{ trans('Cylinder 1') }}</button>
+
+            <button class="btn btn-info mr-3"
+                onclick="open_regulator_form('{{ $uniqueId }}')">{{ trans('Regulator') }}</button>
+        </fieldset>
 
     </div>
+
     <div id="print-div">
 
     </div>
@@ -58,8 +75,9 @@
         function open_vehicle_owner_form(uniqueId) {
             var fd = new FormData();
             fd.append('uniqueId', uniqueId)
+            var url = '{{ route('ngvControl.editModalFrom', ['modalName' => 'vehicle-owner']) }}'
             send_ajax_formdata_request(
-                '{{ route('ngvControl.vehicleOwner.index') }}',
+                url,
                 fd,
                 function(response) {
                     open_admin_modal_with_data(response, 'Vehicle Owner Information')
@@ -67,7 +85,47 @@
             )
         }
 
+        function open_vehicle_info_form(uniqueId) {
+            var fd = new FormData();
+            fd.append('uniqueId', uniqueId)
+            var url = '{{ route('ngvControl.editModalFrom', ['modalName' => 'vehicle-info']) }}'
+            send_ajax_formdata_request(
+                url,
+                fd,
+                function(response) {
+                    open_admin_modal_with_data(response, 'Vehicle Information')
+                }
+            )
+        }
+
+        function open_cylinder1_form(uniqueId) {
+            var fd = new FormData();
+            fd.append('uniqueId', uniqueId)
+            var url = '{{ route('ngvControl.editModalFrom', ['modalName' => 'cylinder1-info']) }}'
+            send_ajax_formdata_request(
+                url,
+                fd,
+                function(response) {
+                    open_admin_modal_with_data(response, 'Cylinder No.1 Information')
+                }
+            )
+        }
+
+        function open_regulator_form(uniqueId) {
+            var fd = new FormData();
+            fd.append('uniqueId', uniqueId)
+            var url = '{{ route('ngvControl.editModalFrom', ['modalName' => 'regulator-info']) }}'
+            send_ajax_formdata_request(
+                url,
+                fd,
+                function(response) {
+                    open_admin_modal_with_data(response, 'Regulator Information')
+                }
+            )
+        }
+
         update_ngv_informations_div()
+
         function update_ngv_informations_div() {
             var fd = new FormData();
             fd.append('uniqueId', '{{ $uniqueId }}')

@@ -57,7 +57,7 @@
                 "{{ route('login') }}",
                 $('#login-form').serialize(),
                 function(response) {
-                    show_message("به صفحه داشبورد منتقل میشوید")
+                    show_message("{{ trans('Please Wait...') }}")
                     window.location = "{{ url('admin') }}"
                 },
                 function(response) {

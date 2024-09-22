@@ -94,6 +94,7 @@ return array(
     'Carbon\\Doctrine\\' => array($vendorDir . '/carbonphp/carbon-doctrine-types/src/Carbon/Doctrine'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
+    'Behin\\Cities\\' => array($baseDir . '/packages/behin-cities/src'),
     'BehinVehicleRegistration\\' => array($baseDir . '/packages/behin-vehicle-registration/src'),
     'BehinUserRoles\\' => array($baseDir . '/packages/behin-user-roles/src'),
     'BehinNgvControl\\' => array($baseDir . '/packages/behin-ngv-control/src'),

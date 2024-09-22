@@ -1,5 +1,6 @@
 <?php
 
+use Behin\Cities\CityProvider;
 use BehinFileControl\BehinFileControlProvider;
 use BehinInit\BehinInitProvider;
 use BehinNgvControl\BehinNgvControlServiceProvider;
@@ -197,6 +198,7 @@ return [
         UserRolesServiceProvider::class,
         UserProfileProvider::class,
         BehinNgvControlServiceProvider::class,
+        CityProvider::class,
         /*
          * Application Service Providers...
          */
