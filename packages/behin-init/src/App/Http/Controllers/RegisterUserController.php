@@ -31,9 +31,9 @@ class RegisterUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'digits:11', 'lowercase', 'unique:'.User::class],
+            'email' => ['required', 'lowercase', 'unique:'.User::class],
             'password' => ['required', Rules\Password::defaults()],
-            
+
         ]);
 
         $user = User::create([
