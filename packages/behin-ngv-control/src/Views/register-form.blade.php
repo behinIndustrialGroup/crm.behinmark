@@ -52,11 +52,28 @@
             <legend>
                 <label for="">{{ trans('Parts') }}</label>
             </legend>
-            <button class="btn btn-primary mr-3"
-                onclick="open_cylinder1_form('{{ $uniqueId }}')">{{ trans('Cylinder 1') }}</button>
+            @php
+                $parts = config('ngv_control.parts');
+            @endphp
+            @foreach ($parts as $key => $value)
+                <button class="btn btn-primary mr-3"
+                    onclick="{{ "open_$key" . "_form('$uniqueId')" }}">{{ trans($value['title']) }}</button>
 
-            <button class="btn btn-info mr-3"
-                onclick="open_regulator_form('{{ $uniqueId }}')">{{ trans('Regulator') }}</button>
+                <script>
+                    function {{ "open_$key" . "_form(uniqueId)" }} {
+                        var fd = new FormData();
+                        fd.append('uniqueId', uniqueId)
+                        var url = '{{ route('ngvControl.editModalFrom', ['modalName' => "$key-info"]) }}'
+                        send_ajax_formdata_request(
+                            url,
+                            fd,
+                            function(response) {
+                                open_admin_modal_with_data(response, '{{ $value['title'] }} Information')
+                            }
+                        )
+                    }
+                </script>
+            @endforeach
         </fieldset>
 
     </div>

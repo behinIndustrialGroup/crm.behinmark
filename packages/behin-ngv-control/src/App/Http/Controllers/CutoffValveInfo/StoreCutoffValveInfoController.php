@@ -1,5 +1,5 @@
 <?php
-namespace BehinNgvControl\App\Http\Controllers\CylinderInfo;
+namespace BehinNgvControl\App\Http\Controllers\CutoffValveInfo;
 
 use App\Http\Controllers\Controller;
 use BehinFileControl\Controllers\FileController;
@@ -9,11 +9,11 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class StoreCylinderInfoController extends Controller
+class StoreCutoffValveInfoController extends Controller
 {
-    public function storeCylinderNo1(Request $request){
+    public function storeCutoffValve(Request $request){
         $uniqueId = $request->ngv_info_unique_id;
-        $row = GetCylinderInfoController::getFirstByUniqueId($uniqueId);
+        $row = GetCutoffValveInfoController::getFirstByUniqueId($uniqueId);
 
         $data = $request->all();
         $image = $request->file('image');
@@ -27,7 +27,7 @@ class StoreCylinderInfoController extends Controller
 
         $row->update($data);
         return response()->json([
-            'msg' => trans("Cylinder informations stored")
+            'msg' => trans("Filling Valve informations stored")
         ]);
     }
 }

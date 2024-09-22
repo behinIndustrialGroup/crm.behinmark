@@ -4,5 +4,5 @@
 
 
 @include('BehinNgvControlViews::edit-modals.partial.part-form', [
-    'partName' => 'regulator'
+    'partName' => 'cutoff_valve'
 ])

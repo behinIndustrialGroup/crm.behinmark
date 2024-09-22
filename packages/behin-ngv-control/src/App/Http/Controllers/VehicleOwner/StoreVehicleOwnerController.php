@@ -22,11 +22,32 @@ class StoreVehicleOwnerController extends Controller
 
         $data = $request->except('uniqueId');
         $personal_image = $request->file('owner_personal_image');
-        $result = FileController::store($personal_image, 'ngv-info-docs');
-        if($result['status'] != 200){
-            return response()->json($result, $result['status']);
+        if(isset($personal_image)){
+            $result = FileController::store($personal_image, 'ngv-info-docs');
+            if($result['status'] != 200){
+                return response()->json($result, $result['status']);
+            }
+            $data['owner_personal_image'] = $result['dir'];
         }
-        $data['owner_personal_image'] = $result['dir'];
+
+        $owner_front_national_card = $request->file('owner_owner_front_national_card');
+        if(isset($owner_front_national_card)){
+            $result = FileController::store($owner_front_national_card, 'ngv-info-docs');
+            if($result['status'] != 200){
+                return response()->json($result, $result['status']);
+            }
+            $data['owner_owner_front_national_card'] = $result['dir'];
+        }
+
+        $owner_back_national_card = $request->file('owner_owner_back_national_card');
+        if(isset($owner_back_national_card)){
+            $result = FileController::store($owner_back_national_card, 'ngv-info-docs');
+            if($result['status'] != 200){
+                return response()->json($result, $result['status']);
+            }
+            $data['owner_owner_back_national_card'] = $result['dir'];
+        }
+
         $row->update($data);
         return response()->json([
             'msg' => trans("Vehicle owner informations stored")
