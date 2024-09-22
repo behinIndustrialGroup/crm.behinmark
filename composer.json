@@ -39,7 +39,7 @@
             "Behin\\Cities\\": "packages/behin-cities/src/"
         },
         "files": [
-            "packages/behin-init/src/app/Helpers/behin-helpers.php",
+            "packages/behin-init/src/App/Helpers/behin-helpers.php",
             "packages/behin-cities/src/Helpers/city-helpers.php"
         ]
     },
