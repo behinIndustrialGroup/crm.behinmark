@@ -9,36 +9,31 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/plugins/font-awesome/css/font-awesome.min.css')  . '?' . config('app.version') }}">
-    <!-- Ionicons -->
-    {{-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> --}}
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/dist/css/adminlte.min.css')  . '?' . config('app.version') }}">
-    <!-- Date Picker -->
-    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/plugins/datepicker/datepicker3.css')  . '?' . config('app.version') }}">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/plugins/daterangepicker/daterangepicker-bs3.css')  . '?' . config('app.version') }}">
-    <!-- bootstrap wysihtml5 - text editor -->
-    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')  . '?' . config('app.version') }}">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <!-- bootstrap rtl -->
-    {{-- <link rel="stylesheet" href="{{ url('public/behin/behin-dist/dist/css/bootstrap-rtl.min.css')  . '?' . config('app.version') }}"> --}}
-    <!-- template rtl version -->
-    {{-- <link rel="stylesheet" href="{{ url('public/behin/behin-dist/dist/css/custom-style.css')  . '?' . config('app.version') }}">
-    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/dist/css/custom.css')  . '?' . config('app.version') }}"> --}}
 
-    {{-- <link rel="stylesheet" href="{{ url('public/behin/behin-dist/dist/css/custom.css')  . '?' . config('app.version') }}"> --}}
-    <link rel="stylesheet" type="text/css" href="{{ url('public/behin/behin-dist/plugins/datatables/dataTables.bootstrap4.css')  . '?' . config('app.version') }}" />
-    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/dist/css/dropzone.min.css')  . '?' . config('app.version') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <link rel="stylesheet" href="{{ Url('public/behin/behin-dist/dist/css/persian-datepicker-0.4.5.min.css')  . '?' . config('app.version') }}" />
-    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/plugins/select2/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/persian-date-picker/persian-datepicker.css') }}">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet"
+        href="{{ url('public/behin/behin-dist/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    <!-- iCheck -->
+    {{-- <link rel="stylesheet" href="{{ url('public/behin/behin-dist/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}"> --}}
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/plugins/jqvmap/jqvmap.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/dist/css/adminlte.min.css') }}">
+    <!-- overlayScrollbars -->
+    {{-- <link rel="stylesheet" href="{{ url('public/behin/behin-dist/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}"> --}}
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/plugins/daterangepicker/daterangepicker.css') }}">
+    <!-- summernote -->
+    {{-- <link rel="stylesheet" href="{{ url('public/behin/behin-dist/plugins/summernote/summernote-bs4.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ url('public/behin/behin-dist/plugins/toastr/toastr.min.css')}}">
     @yield('style')
 
     <script src="{{ url('public/behin/behin-dist/plugins/jquery/jquery.min.js') . '?' . config('app.version') }}"></script>

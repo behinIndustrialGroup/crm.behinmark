@@ -19,7 +19,7 @@
             </div>
 
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                <ul class="nav nav-pills nav-sidebar flex-column" style="padding: 0" data-widget="treeview" role="menu"
                     data-accordion="false">
                     @foreach (config('sidebar.menu') as $menu)
                         @if (access('Menu >>' . $menu['fa_name']))
