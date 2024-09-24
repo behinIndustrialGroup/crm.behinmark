@@ -24,6 +24,7 @@
 
     <div class="mb-3">
         <label for="" class="form-label">Image</label>
+        <p style="color: red">Notice: Part serial number should be clear in part photo</p>
         @if ($row->$partName()->image)
             <a href="{{ url("public/". $row->$partName()->image) }}" target="_blank">download</a>
         @endif

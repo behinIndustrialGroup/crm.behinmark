@@ -40,6 +40,7 @@
         },
         "files": [
             "packages/behin-init/src/App/Helpers/behin-helpers.php",
+            "packages/behin-ngv-control/src/App/Helpers/ngv-control-helpers.php",
             "packages/behin-cities/src/Helpers/city-helpers.php"
         ]
     },

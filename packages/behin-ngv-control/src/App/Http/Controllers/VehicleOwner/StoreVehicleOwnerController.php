@@ -50,7 +50,7 @@ class StoreVehicleOwnerController extends Controller
 
         $row->update($data);
         return response()->json([
-            'msg' => trans("Vehicle owner informations stored")
+            'msg' => trans("Information stored")
         ]);
     }
 }

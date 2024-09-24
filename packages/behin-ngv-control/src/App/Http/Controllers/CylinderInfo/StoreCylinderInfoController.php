@@ -16,13 +16,80 @@ class StoreCylinderInfoController extends Controller
         $row = GetCylinderInfoController::getFirstByUniqueId($uniqueId);
 
         $data = $request->all();
-        $image = $request->file('image');
-        if(isset($image)){
-            $result = FileController::store($image, 'ngv-info-docs');
+        $cylinder_image = $request->file('cylinder_image');
+        if(isset($cylinder_image)){
+            $result = FileController::store($cylinder_image, 'ngv-info-docs');
             if($result['status'] != 200){
                 return response()->json($result, $result['status']);
             }
-            $data['image'] = $result['dir'];
+            $data['cylinder_image'] = $result['dir'];
+        }
+
+        $valve_image = $request->file('valve_image');
+        if(isset($valve_image)){
+            $result = FileController::store($valve_image, 'ngv-info-docs');
+            if($result['status'] != 200){
+                return response()->json($result, $result['status']);
+            }
+            $data['valve_image'] = $result['dir'];
+        }
+
+        $row->update($data);
+        return response()->json([
+            'msg' => trans("Cylinder informations stored")
+        ]);
+    }
+
+    public function storeCylinderNo2(Request $request){
+        $uniqueId = $request->ngv_info_unique_id;
+        $row = GetCylinderInfoController::getSecondByUniqueId($uniqueId);
+
+        $data = $request->all();
+        $cylinder_image = $request->file('cylinder_image');
+        if(isset($cylinder_image)){
+            $result = FileController::store($cylinder_image, 'ngv-info-docs');
+            if($result['status'] != 200){
+                return response()->json($result, $result['status']);
+            }
+            $data['cylinder_image'] = $result['dir'];
+        }
+
+        $valve_image = $request->file('valve_image');
+        if(isset($valve_image)){
+            $result = FileController::store($valve_image, 'ngv-info-docs');
+            if($result['status'] != 200){
+                return response()->json($result, $result['status']);
+            }
+            $data['valve_image'] = $result['dir'];
+        }
+
+        $row->update($data);
+        return response()->json([
+            'msg' => trans("Cylinder informations stored")
+        ]);
+    }
+
+    public function storeCylinderNo3(Request $request){
+        $uniqueId = $request->ngv_info_unique_id;
+        $row = GetCylinderInfoController::getThirdByUniqueId($uniqueId);
+
+        $data = $request->all();
+        $cylinder_image = $request->file('cylinder_image');
+        if(isset($cylinder_image)){
+            $result = FileController::store($cylinder_image, 'ngv-info-docs');
+            if($result['status'] != 200){
+                return response()->json($result, $result['status']);
+            }
+            $data['cylinder_image'] = $result['dir'];
+        }
+
+        $valve_image = $request->file('valve_image');
+        if(isset($valve_image)){
+            $result = FileController::store($valve_image, 'ngv-info-docs');
+            if($result['status'] != 200){
+                return response()->json($result, $result['status']);
+            }
+            $data['valve_image'] = $result['dir'];
         }
 
         $row->update($data);

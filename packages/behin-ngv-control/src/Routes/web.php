@@ -4,8 +4,11 @@ use BehinNgvControl\App\Http\Controllers\CutoffValveInfo\StoreCutoffValveInfoCon
 use BehinNgvControl\App\Http\Controllers\CylinderInfo\StoreCylinderInfoController;
 use BehinNgvControl\App\Http\Controllers\EcuInfo\StoreEcuInfoController;
 use BehinNgvControl\App\Http\Controllers\FillingValveInfo\StoreFillingValveInfoController;
+use BehinNgvControl\App\Http\Controllers\FuelSolenoidInfo\StoreFuelSolenoidInfoController;
 use BehinNgvControl\App\Http\Controllers\GetNgvInfoController;
+use BehinNgvControl\App\Http\Controllers\GetPartialViewController;
 use BehinNgvControl\App\Http\Controllers\InjectorInfo\StoreInjectorInfoController;
+use BehinNgvControl\App\Http\Controllers\KitInfo\StoreKitInfoController;
 use BehinNgvControl\App\Http\Controllers\RegisterFormController;
 use BehinNgvControl\App\Http\Controllers\RegulatorInfo\StoreRegulatorInfoController;
 use BehinNgvControl\App\Http\Controllers\VehicleInfo\StoreVehicleInfoController;
@@ -20,6 +23,7 @@ Route::name('ngvControl.')->prefix('ngv-control')->middleware(['web', 'auth'])->
     Route::any('create-or-edit-form/{modalName}', [RegisterFormController::class, 'openEditModalView'])->name('editModalFrom');
 
     Route::any('print-ngv-info-view', [GetNgvInfoController::class, 'printView'])->name('printView');
+    Route::any('update-part-modal-buttons-view', [GetPartialViewController::class, 'getOpenPartModalButtons'])->name('getOpenPartModalButtons');
 
     Route::name('vehicleOwner.')->prefix('vehicle-owner')->group(function (){
         Route::any('store', [StoreVehicleOwnerController::class, 'store'])->name('store');
@@ -31,6 +35,18 @@ Route::name('ngvControl.')->prefix('ngv-control')->middleware(['web', 'auth'])->
 
     Route::name('cylinderInfo.')->prefix('cylinder-info')->group(function (){
         Route::any('store', [StoreCylinderInfoController::class, 'storeCylinderNo1'])->name('store');
+    });
+
+    Route::name('cylinder2Info.')->prefix('cylinder2-info')->group(function (){
+        Route::any('store', [StoreCylinderInfoController::class, 'storeCylinderNo2'])->name('store');
+    });
+
+    Route::name('cylinder3Info.')->prefix('cylinder3-info')->group(function (){
+        Route::any('store', [StoreCylinderInfoController::class, 'storeCylinderNo3'])->name('store');
+    });
+
+    Route::name('kitInfo.')->prefix('kit-info')->group(function (){
+        Route::any('store', [StoreKitInfoController::class, 'store'])->name('store');
     });
 
     Route::name('regulatorInfo.')->prefix('regulator-info')->group(function (){
@@ -49,7 +65,15 @@ Route::name('ngvControl.')->prefix('ngv-control')->middleware(['web', 'auth'])->
         Route::any('store', [StoreEcuInfoController::class, 'storeEcu'])->name('store');
     });
 
+    Route::name('fuel_solenoidInfo.')->prefix('fuel_solenoid-info')->group(function (){
+        Route::any('store', [StoreFuelSolenoidInfoController::class, 'store'])->name('store');
+    });
+
     Route::name('injectorInfo.')->prefix('injector-info')->group(function (){
         Route::any('store', [StoreInjectorInfoController::class, 'storeInjector'])->name('store');
+    });
+
+    Route::name('injector2Info.')->prefix('injector2-info')->group(function (){
+        Route::any('store', [StoreInjectorInfoController::class, 'storeInjectorNo2'])->name('store');
     });
 });

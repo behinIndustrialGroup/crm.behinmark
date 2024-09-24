@@ -4,7 +4,7 @@
 
     <!-- اطلاعات شخصی -->
     <div class="print-section col-sm-6">
-        <div class="section-title">Owner Information</div>
+        <div class="section-title bg-gray">Owner Information</div>
         <table class="table table-bordered">
             <tr>
                 <th>{{ trans('First Name') }}</th>
@@ -31,7 +31,7 @@
 
     <!-- اطلاعات وسیله نقلیه -->
     <div class="print-section col-sm-6">
-        <div class="section-title">Vehicle Information</div>
+        <div class="section-title bg-gray">Vehicle Information</div>
         <table class="table table-bordered">
             <tr>
                 <th>{{ trans('Vehicle Manufacturer') }}</th>
@@ -47,128 +47,180 @@
             </tr>
             <tr>
                 <th>{{ trans('Vehicle Plate') }}</th>
-                <td>{{ $row->vehicle_plate_state .'-' . $row->vehicle_plate_number ?? '' }}</td>
+                <td>{{ $row->vehicle_plate_state . '-' . $row->vehicle_plate_number ?? '' }}</td>
             </tr>
         </table>
     </div>
 
-    <!-- اطلاعات مخزن -->
-    <div class="print-section col-sm-6">
-        <div class="section-title">Cylinder Information</div>
-        <table class="table table-bordered">
-            <tr>
-                <th>{{ trans('Cylinder Serial') }}</th>
-                <td>{{ $row->cylinder1()->serial ?? '' }}</td>
-            </tr>
-            <tr>
-                <th>{{ trans('Cylinder Manufacturer') }}</th>
-                <td>{{ $row->cylinder1()->manufacturer ?? '' }}</td>
-            </tr>
-            <tr>
-                <th>{{ trans('Cylinder Manufacture Date') }}</th>
-                <td>{{ $row->cylinder1()->produce_date ?? '' }}</td>
-            </tr>
-            <tr>
-                <th>{{ trans('Cylinder Expiry Date') }}</th>
-                <td>{{ $row->cylinder1()->expire_date ?? '' }}</td>
-            </tr>
-            <tr>
-                <th>{{ trans('Cylinder Type') }}</th>
-                <td>{{ $row->cylinder1()->type ?? '' }}</td>
-            </tr>
-            <tr>
-                <th>{{ trans('Valve Serial') }}</th>
-                <td>{{ $row->cylinder1()->valve_serial ?? '' }}</td>
-            </tr>
-            <tr>
-                <th>{{ trans('Valve Manufacturer') }}</th>
-                <td>{{ $row->cylinder1()->valve_manufacturer ?? '' }}</td>
-            </tr>
-            <tr>
-                <th>{{ trans('Valve Type') }}</th>
-                <td>{{ $row->cylinder1()->valve_type ?? '' }}</td>
-            </tr>
-        </table>
-    </div>
+    @php
+        $kit = $row->kit();
+    @endphp
 
-    <!-- اطلاعات رگولاتور -->
-    <div class="print-section col-sm-6">
-        <div class="section-title">Regulator Information</div>
-        <table class="table table-bordered">
-            <tr>
-                <th>{{ trans('Regulator Serial') }}</th>
-                <td>{{ $row->regulator()->serial ?? '' }}</td>
-            </tr>
-            <tr>
-                <th>{{ trans('Regulator Manufacturer') }}</th>
-                <td>{{ $row->regulator()->manufacturer ?? '' }}</td>
-            </tr>
-            <tr>
-                <th>{{ trans('Regulator Type') }}</th>
-                <td>{{ $row->regulator()->type ?? '' }}</td>
-            </tr>
-        </table>
-    </div>
+    @if (displayPartsInformation($row->unique_id))
 
-    <!-- اطلاعات شیرقطع پرکن -->
-    <div class="print-section col-sm-6">
-        <div class="section-title">Filling Valve Information</div>
-        <table class="table table-bordered">
-            <tr>
-                <th>{{ trans('Filling Serial') }}</th>
-                <td>{{ $row->filling_valve()->serial ?? '' }}</td>
-            </tr>
-            <tr>
-                <th>{{ trans('Filling Manufacturer') }}</th>
-                <td>{{ $row->filling_valve()->manufacturer ?? '' }}</td>
-            </tr>
-        </table>
-    </div>
+        <!-- اطلاعات مخزن -->
+        <div class="print-section col-sm-6">
+            <div class="section-title bg-gray">Cylinder No.1 Information</div>
+            <table class="table table-bordered">
+                <tr>
+                    <th>{{ trans('Cylinder Serial') }}</th>
+                    <td>{{ $row->cylinder1()->serial ?? '' }}</td>
+                </tr>
+                <tr>
+                    <th>{{ trans('Cylinder Manufacturer') }}</th>
+                    <td>{{ $row->cylinder1()->manufacturer ?? '' }}</td>
+                </tr>
+                <tr>
+                    <th>{{ trans('Cylinder Manufacture Date') }}</th>
+                    <td>{{ $row->cylinder1()->produce_date ?? '' }}</td>
+                </tr>
+                <tr>
+                    <th>{{ trans('Cylinder Expiry Date') }}</th>
+                    <td>{{ $row->cylinder1()->expire_date ?? '' }}</td>
+                </tr>
+                <tr>
+                    <th>{{ trans('Cylinder Type') }}</th>
+                    <td>{{ $row->cylinder1()->type ?? '' }}</td>
+                </tr>
+                <tr>
+                    <th>{{ trans('Valve Serial') }}</th>
+                    <td>{{ $row->cylinder1()->valve_serial ?? '' }}</td>
+                </tr>
+                <tr>
+                    <th>{{ trans('Valve Manufacturer') }}</th>
+                    <td>{{ $row->cylinder1()->valve_manufacturer ?? '' }}</td>
+                </tr>
+                <tr>
+                    <th>{{ trans('Valve Type') }}</th>
+                    <td>{{ $row->cylinder1()->valve_type ?? '' }}</td>
+                </tr>
+            </table>
+        </div>
 
-    <!-- اطلاعات ایسیو -->
-    <div class="print-section col-sm-6">
-        <div class="section-title">ECU Information</div>
-        <table class="table table-bordered">
-            <tr>
-                <th>{{ trans('ECU Serial') }}</th>
-                <td>{{ $row->ecu()->serial ?? '' }}</td>
-            </tr>
-            <tr>
-                <th>{{ trans('ECU Manufacturer') }}</th>
-                <td>{{ $row->ecu()->manufacturer ?? '' }}</td>
-            </tr>
-        </table>
-    </div>
+        @if ($row->cylinder2(false))
+            <div class="print-section col-sm-6">
+                <div class="section-title bg-gray">Cylinder No.2 Information</div>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>{{ trans('Cylinder No.2 Serial') }}</th>
+                        <td>{{ $row->cylinder2()->serial ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ trans('Cylinder No.2 Manufacturer') }}</th>
+                        <td>{{ $row->cylinder2()->manufacturer ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ trans('Cylinder No.2 Manufacture Date') }}</th>
+                        <td>{{ $row->cylinder2()->produce_date ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ trans('Cylinder No.2 Expiry Date') }}</th>
+                        <td>{{ $row->cylinder2()->expire_date ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ trans('Cylinder No.2 Type') }}</th>
+                        <td>{{ $row->cylinder2()->type ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ trans('Valve No.2 Serial') }}</th>
+                        <td>{{ $row->cylinder2()->valve_serial ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ trans('Valve No.2 Manufacturer') }}</th>
+                        <td>{{ $row->cylinder2()->valve_manufacturer ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ trans('Valve No.2 Type') }}</th>
+                        <td>{{ $row->cylinder2()->valve_type ?? '' }}</td>
+                    </tr>
+                </table>
+            </div>
+        @endif
 
-    <!-- اطلاعات انژکتور -->
-    <div class="print-section col-sm-6">
-        <div class="section-title">Injector Information</div>
-        <table class="table table-bordered">
-            <tr>
-                <th>{{ trans('Injector Serial') }}</th>
-                <td>{{ $row->injector()->serial ?? '' }}</td>
-            </tr>
-            <tr>
-                <th>{{ trans('Injector Manufacturer') }}</th>
-                <td>{{ $row->injector()->manufacturer ?? '' }}</td>
-            </tr>
-        </table>
-    </div>
+        @if ($row->cylinder3(false))
+            <div class="print-section col-sm-6">
+                <div class="section-title bg-gray">Cylinder No.3 Information</div>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>{{ trans('Cylinder No.3 Serial') }}</th>
+                        <td>{{ $row->cylinder3()->serial ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ trans('Cylinder No.3 Manufacturer') }}</th>
+                        <td>{{ $row->cylinder3()->manufacturer ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ trans('Cylinder No.3 Manufacture Date') }}</th>
+                        <td>{{ $row->cylinder3()->produce_date ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ trans('Cylinder No.3 Expiry Date') }}</th>
+                        <td>{{ $row->cylinder3()->expire_date ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ trans('Cylinder No.3 Type') }}</th>
+                        <td>{{ $row->cylinder3()->type ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ trans('Valve No.3 Serial') }}</th>
+                        <td>{{ $row->cylinder3()->valve_serial ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ trans('Valve No.3 Manufacturer') }}</th>
+                        <td>{{ $row->cylinder3()->valve_manufacturer ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ trans('Valve No.3 Type') }}</th>
+                        <td>{{ $row->cylinder3()->valve_type ?? '' }}</td>
+                    </tr>
+                </table>
+            </div>
+        @endif
 
-    <!-- اطلاعات شیرقطع کن -->
-    <div class="print-section col-sm-6">
-        <div class="section-title">Cutoff Valve Information</div>
-        <table class="table table-bordered">
-            <tr>
-                <th>{{ trans('Cutoff Valve Serial') }}</th>
-                <td>{{ $row->cutoff_valve()->serial ?? '' }}</td>
-            </tr>
-            <tr>
-                <th>{{ trans('Cutoff Valve Manufacturer') }}</th>
-                <td>{{ $row->cutoff_valve()->manufacturer ?? '' }}</td>
-            </tr>
-        </table>
-    </div>
+        @php
+            $parts = getKitParts($row->unique_id);
+        @endphp
+
+        @foreach ($parts as $key => $value)
+            @if (str_contains($key, 'cylinder'))
+            @else
+                @if ($row->$key(false))
+                    <div class="print-section col-sm-6">
+                        <div class="section-title bg-gray">{{ $value['title'] }} Information</div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>{{ trans($value['title'] . 'Serial') }}</th>
+                                <td>{{ $row->$key()->serial ?? '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ trans($value['title'] . 'Manufacturer') }}</th>
+                                <td>{{ $row->$key()->manufacturer ?? '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ trans($value['title'] . 'Type') }}</th>
+                                <td>{{ $row->$key()->type ?? '' }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                @endif
+            @endif
+        @endforeach
+
+        <div class="row col-sm-12">
+            <div class="print-section col-sm-6">
+                Vehicle Owner Signature
+            </div>
+            <div class="print-section col-sm-6">
+                Supervisor Signature
+            </div>
+        </div>
+    @else
+        <p style="color: red">
+            {{ trans('NOTICE: For Show Parts Information, Enter Kit Information First') }}
+        </p>
+    @endif
+
+
 
 
 </div>

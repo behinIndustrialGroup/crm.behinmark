@@ -12,9 +12,37 @@ use Illuminate\Support\Facades\Auth;
 
 class GetCylinderInfoController extends Controller
 {
-    public static function getFirstByUniqueId($uniqueId){
-        return CylinderInfo::where('ngv_info_unique_id', $uniqueId)->firstOrCreate([
-            'ngv_info_unique_id' => $uniqueId
-        ]);
+    public static function getFirstByUniqueId($uniqueId, $autoCreate = true){
+        $query = CylinderInfo::where('ngv_info_unique_id', $uniqueId);
+        if($autoCreate){
+            return $query->firstOrCreate([
+                'ngv_info_unique_id' => $uniqueId
+            ]);
+        }else{
+            return $query->first();
+        }
+    }
+
+    public static function getSecondByUniqueId($uniqueId, $autoCreate = true){
+        $query = CylinderInfo::where('ngv_info_unique_id', $uniqueId)->skip(1);
+        if($autoCreate){
+            return $query->firstOrCreate([
+                'ngv_info_unique_id' => $uniqueId
+            ]);
+        }else{
+            return $query->first();
+        }
+
+    }
+
+    public static function getThirdByUniqueId($uniqueId, $autoCreate = true){
+        $query = CylinderInfo::where('ngv_info_unique_id', $uniqueId)->skip(2);
+        if($autoCreate){
+            return $query->firstOrCreate([
+                'ngv_info_unique_id' => $uniqueId
+            ]);
+        }else{
+            return $query->first();
+        }
     }
 }

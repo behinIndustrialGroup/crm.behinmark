@@ -3,44 +3,44 @@
 @endphp
 
 
-<form id="cylinder1-info" action="javascript:void(0)">
+<form id="cylinder2-info" action="javascript:void(0)">
     <input type="text" name="ngv_info_unique_id" id="" value="{{ $row->unique_id }}" readonly>
 
     <!-- Cylinder Manufacturer -->
     <div class="mb-3">
         <label for="" class="form-label">Cylinder Manufacturer</label>
-        <input type="text" value="{{ $row->cylinder1()->manufacturer }}" name="manufacturer" class="form-control"
+        <input type="text" value="{{ $row->cylinder2()->manufacturer }}" name="manufacturer" class="form-control"
             id="" placeholder="">
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Cylinder Serial</label>
-        <input type="text" value="{{ $row->cylinder1()->serial }}" name="serial" class="form-control"
+        <input type="text" value="{{ $row->cylinder2()->serial }}" name="serial" class="form-control"
             id="" placeholder="">
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Cylinder type</label>
-        <input type="text" value="{{ $row->cylinder1()->type }}" name="type" class="form-control"
+        <input type="text" value="{{ $row->cylinder2()->type }}" name="type" class="form-control"
             id="" placeholder="">
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Cylinder production date</label>
-        <input type="text" value="{{ $row->cylinder1()->produce_date }}" name="produce_date" class="form-control"
+        <input type="text" value="{{ $row->cylinder2()->produce_date }}" name="produce_date" class="form-control"
             id="" placeholder="">
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Cylinder expiration date</label>
-        <input type="text" value="{{ $row->cylinder1()->expire_date }}" name="expire_date" class="form-control"
+        <input type="text" value="{{ $row->cylinder2()->expire_date }}" name="expire_date" class="form-control"
             id="" placeholder="">
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Cylinder image</label>
-        @if ($row->cylinder1()->cylinder_image)
-            <a target="_blank" href="{{ url("public/". $row->cylinder1()->cylinder_image ) }}">download</a>
+        @if ($row->cylinder2()->cylinder_image)
+            <a target="_blank" href="{{ url("public/". $row->cylinder2()->cylinder_image ) }}">download</a>
         @endif
         <input type="file" name="cylinder_image" class="form-control"
             id="" placeholder="">
@@ -48,26 +48,26 @@
 
     <div class="mb-3">
         <label for="" class="form-label">Cylinder valve manufacturer</label>
-        <input type="text" value="{{ $row->cylinder1()->valve_manufacturer }}" name="valve_manufacturer" class="form-control"
+        <input type="text" value="{{ $row->cylinder2()->valve_manufacturer }}" name="valve_manufacturer" class="form-control"
             id="" placeholder="">
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Cylinder valve serial</label>
-        <input type="text" value="{{ $row->cylinder1()->valve_serial }}" name="valve_serial" class="form-control"
+        <input type="text" value="{{ $row->cylinder2()->valve_serial }}" name="valve_serial" class="form-control"
             id="" placeholder="">
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Cylinder valve type</label>
-        <input type="text" value="{{ $row->cylinder1()->valve_type }}" name="valve_type" class="form-control"
+        <input type="text" value="{{ $row->cylinder2()->valve_type }}" name="valve_type" class="form-control"
             id="" placeholder="">
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Cylinder valve image</label>
-        @if ($row->cylinder1()->valve_image)
-            <a target="_blank" href="{{ url("public/". $row->cylinder1()->valve_image ) }}">download</a>
+        @if ($row->cylinder2()->valve_image)
+            <a target="_blank" href="{{ url("public/". $row->cylinder2()->valve_image ) }}">download</a>
         @endif
         <input type="file" name="valve_image" class="form-control"
             id="" placeholder="">
@@ -87,14 +87,14 @@
             capture="camera">
     </div> --}}
 </form>
-<button class="btn btn-success" onclick="submit_cylinder1_info()">{{ trans('Submit') }}</button>
+<button class="btn btn-success" onclick="submit_cylinder2_info()">{{ trans('Submit') }}</button>
 
 <script>
-    function submit_cylinder1_info() {
-        var form = $('#cylinder1-info')[0]
+    function submit_cylinder2_info() {
+        var form = $('#cylinder2-info')[0]
         var fd = new FormData(form)
         send_ajax_formdata_request(
-            '{{ route('ngvControl.cylinderInfo.store') }}',
+            '{{ route('ngvControl.cylinder2Info.store') }}',
             fd,
             function(response) {
                 console.log(response);

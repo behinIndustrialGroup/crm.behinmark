@@ -30,4 +30,24 @@ class StoreInjectorInfoController extends Controller
             'msg' => trans("Filling Valve informations stored")
         ]);
     }
+
+    public function storeInjectorNo2(Request $request){
+        $uniqueId = $request->ngv_info_unique_id;
+        $row = GetInjectorInfoController::getSecondByUniqueId($uniqueId);
+
+        $data = $request->all();
+        $image = $request->file('image');
+        if(isset($image)){
+            $result = FileController::store($image, 'ngv-info-docs');
+            if($result['status'] != 200){
+                return response()->json($result, $result['status']);
+            }
+            $data['image'] = $result['dir'];
+        }
+
+        $row->update($data);
+        return response()->json([
+            'msg' => trans("Filling Valve informations stored")
+        ]);
+    }
 }

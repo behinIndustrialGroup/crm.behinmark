@@ -40,11 +40,19 @@
 @section('content')
     <div class="row mt-3">
         <input type="text" name="uniqueId" id="" class="form-control mb-3" value="{{ $row->unique_id }}" readonly>
+        <div class="row col-sm-12 mb-3">
+            <label for="">{{ trans('Convertion Program') }}: </label>
+            <select name="convertion_program" id="convertion_program" class="mr-3" onchange="update_convertion_program()">
+                @foreach (config('ngv_control.convertion_program_options') as $item)
+                    <option value="{{ $item }}">{{ $item }}</option>
+                @endforeach
+            </select>
+        </div>
         <button class="btn btn-primary mr-3"
-            onclick="open_vehicle_owner_form('{{ $uniqueId }}')">{{ trans('Vehicle Owner Informations') }}</button>
+            onclick="open_vehicle_owner_form('{{ $uniqueId }}')">{{ trans('Vehicle Owner Information') }}</button>
 
         <button class="btn btn-info mr-3"
-            onclick="open_vehicle_info_form('{{ $uniqueId }}')">{{ trans('Vehicle Informations') }}</button>
+            onclick="open_vehicle_info_form('{{ $uniqueId }}')">{{ trans('Vehicle Information') }}</button>
     </div>
 
     <div class="row mt-3">
@@ -52,28 +60,13 @@
             <legend>
                 <label for="">{{ trans('Parts') }}</label>
             </legend>
-            @php
-                $parts = config('ngv_control.parts');
-            @endphp
-            @foreach ($parts as $key => $value)
-                <button class="btn btn-primary mr-3"
-                    onclick="{{ "open_$key" . "_form('$uniqueId')" }}">{{ trans($value['title']) }}</button>
+            <button class="btn btn-success mr-3 mb-3"
+                onclick="{{ "open_kit_form('$uniqueId')" }}">{{ trans('Kit Information') }}</button>
 
-                <script>
-                    function {{ "open_$key" . "_form(uniqueId)" }} {
-                        var fd = new FormData();
-                        fd.append('uniqueId', uniqueId)
-                        var url = '{{ route('ngvControl.editModalFrom', ['modalName' => "$key-info"]) }}'
-                        send_ajax_formdata_request(
-                            url,
-                            fd,
-                            function(response) {
-                                open_admin_modal_with_data(response, '{{ $value['title'] }} Information')
-                            }
-                        )
-                    }
-                </script>
-            @endforeach
+            <div class="" id="part-modal-buttons">
+
+            </div>
+
         </fieldset>
 
     </div>
@@ -115,31 +108,35 @@
             )
         }
 
-        function open_cylinder1_form(uniqueId) {
+        function open_kit_form(uniqueId) {
             var fd = new FormData();
             fd.append('uniqueId', uniqueId)
-            var url = '{{ route('ngvControl.editModalFrom', ['modalName' => 'cylinder1-info']) }}'
+            var url = '{{ route('ngvControl.editModalFrom', ['modalName' => 'kit-info']) }}'
             send_ajax_formdata_request(
                 url,
                 fd,
                 function(response) {
-                    open_admin_modal_with_data(response, 'Cylinder No.1 Information')
+                    open_admin_modal_with_data(response, 'Kit Information')
                 }
             )
         }
 
-        function open_regulator_form(uniqueId) {
+        update_convertion_program()
+
+        function update_convertion_program() {
             var fd = new FormData();
-            fd.append('uniqueId', uniqueId)
-            var url = '{{ route('ngvControl.editModalFrom', ['modalName' => 'regulator-info']) }}'
+            fd.append('uniqueId', '{{ $uniqueId }}')
+            fd.append('convertion_program', $('#convertion_program').val())
+            url = '{{ route('ngvControl.vehicleOwner.store') }}'
             send_ajax_formdata_request(
                 url,
                 fd,
                 function(response) {
-                    open_admin_modal_with_data(response, 'Regulator Information')
+                    show_message(response.msg);
                 }
             )
         }
+
 
         update_ngv_informations_div()
 
@@ -152,6 +149,21 @@
                 fd,
                 function(response) {
                     $('#print-div').html(response)
+                }
+            )
+        }
+
+        update_part_modal_buttons_div()
+
+        function update_part_modal_buttons_div() {
+            var fd = new FormData();
+            fd.append('uniqueId', '{{ $uniqueId }}')
+            url = '{{ route('ngvControl.getOpenPartModalButtons') }}'
+            send_ajax_formdata_request(
+                url,
+                fd,
+                function(response) {
+                    $('#part-modal-buttons').html(response)
                 }
             )
         }

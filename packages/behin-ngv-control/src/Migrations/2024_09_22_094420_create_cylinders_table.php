@@ -13,6 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
+
+        Schema::create('behin_part_kits', function (Blueprint $table) {
+            $table->id();
+            $table->string('ngv_info_unique_id');
+            $table->string('brand')->nullable();
+            $table->string('serial')->nullable();
+            $table->string('type')->nullable();
+            $table->string('image')->nullable();
+
+            $table->timestamps();
+        });
+
+
         Schema::create('behin_part_cylinders', function (Blueprint $table) {
             $table->id();
             $table->string('ngv_info_unique_id');
@@ -42,6 +55,17 @@ return new class extends Migration
         });
 
         Schema::create('behin_part_ecus', function (Blueprint $table) {
+            $table->id();
+            $table->string('ngv_info_unique_id');
+            $table->string('manufacturer')->nullable();
+            $table->string('serial')->nullable();
+            $table->string('type')->nullable();
+            $table->string('image')->nullable();
+
+            $table->timestamps();
+        });
+
+        Schema::create('behin_part_fuel_solenoids', function (Blueprint $table) {
             $table->id();
             $table->string('ngv_info_unique_id');
             $table->string('manufacturer')->nullable();
