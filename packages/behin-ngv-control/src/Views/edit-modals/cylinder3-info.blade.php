@@ -21,8 +21,11 @@
 
     <div class="mb-3">
         <label for="" class="form-label">Cylinder type</label>
-        <input type="text" value="{{ $row->cylinder3()->type }}" name="type" class="form-control"
-            id="" placeholder="">
+        <select name="type" id="" class="form-control">
+            @foreach (config('ngv_control.cylinder_type') as $item)
+                <option value="{{ $item }}" {{ ($item === $row->cylinder3()->type)? 'selected': '' }} >{{ $item }}</option>
+            @endforeach
+        </select>
     </div>
 
     <div class="mb-3">
@@ -60,8 +63,11 @@
 
     <div class="mb-3">
         <label for="" class="form-label">Cylinder valve type</label>
-        <input type="text" value="{{ $row->cylinder3()->valve_type }}" name="valve_type" class="form-control"
-            id="" placeholder="">
+        <select name="valve_type" id="" class="form-control">
+            @foreach (config('ngv_control.valve_type') as $item)
+                <option value="{{ $item }}" {{ ($item === $row->cylinder3()->valve_type)? 'selected': '' }} >{{ $item }}</option>
+            @endforeach
+        </select>
     </div>
 
     <div class="mb-3">

@@ -14,7 +14,7 @@ class CreateNgvInfoController extends Controller
     public static function create(){
         $lastCount = NgvInfo::count();
         $uniqueId = new UniqueIDController('ngv_informations', 'unique_id', $lastCount);
-        $uniqueId::setPrefix("NIGNGV");
+        $uniqueId::setPrefix("NGNGV");
         $uniqueId::setJustNumber(true);
         $uniqueId::setSeprator('-');
         $uniqueId = $uniqueId::create();

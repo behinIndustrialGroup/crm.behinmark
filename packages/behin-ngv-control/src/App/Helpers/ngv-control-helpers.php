@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use BehinNgvControl\App\Http\Controllers\GetNgvInfoController;
 
 if (!function_exists('displayPartsInformation')) {
@@ -21,5 +22,11 @@ if (!function_exists('getKitParts')) {
             return config('ngv_control.parts_for_OL');
         }
         return config('ngv_control.parts');
+    }
+}
+
+if (!function_exists('getUserById')) {
+    function getUserById($id) {
+        return User::find($id);
     }
 }

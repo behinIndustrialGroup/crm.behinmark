@@ -36,7 +36,9 @@ class NgvInfo extends Model
         'vehicle_card_image',
         'vehicle_plaque_image',
         'convertion_program',
-        'registeror_user_id'
+        'registeror_user_id',
+        'retrofit_workshop',
+        'vehicle_vin'
     ];
 
     public function kit(){

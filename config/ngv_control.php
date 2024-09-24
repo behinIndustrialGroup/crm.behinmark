@@ -9,6 +9,20 @@ return [
         'Pi-CNG',
         'Others'
     ],
+    'retrofit_workshop_options' => [
+        'Kaduna',
+        'Abuja'
+    ],
+    'cylinder_type' => [
+        '1',
+        '2',
+        '3',
+        '4'
+    ],
+    'valve_type' => [
+        'Manual',
+        'Automatic',
+    ],
     'parts' => [
         'cylinder1' => [
             'title' => 'Cylinder & Valve No.1',
@@ -91,16 +105,6 @@ return [
         'fuel_solenoid' => [
             'title' => 'Fuel Selenoid',
             'controller' => 'fuel_selenoid',
-            'function' => 'store'
-        ],
-        'injector' => [
-            'title' => 'Injector No.1',
-            'controller' => 'Injector',
-            'function' => 'store'
-        ],
-        'injector2' => [
-            'title' => 'Injector No.2',
-            'controller' => 'Injector',
             'function' => 'store'
         ],
     ]

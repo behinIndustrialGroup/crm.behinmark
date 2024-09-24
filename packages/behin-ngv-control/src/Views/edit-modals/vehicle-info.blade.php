@@ -27,10 +27,16 @@
             placeholder="e.g., 2010">
     </div>
 
+    <div class="mb-3">
+        <label for="vin" class="form-label">VIN</label>
+        <input type="text" value="{{ $row->vehicle_vin }}" name="vehicle_vin" class="form-control" id="vin"
+            placeholder="">
+    </div>
+
     <!-- Year of Manufacture -->
-    <div class="mb-3 form-control">
+    <div class="row col-sm-12 mb-3">
         <label for="state" class="form-label">Vehicle Registration Number</label>
-        <div class="row">
+        <div class="row col-sm-12">
             <div class="col-sm-4">
                 <label for="state" class="form-label">State</label>
                 <select class="form-control" id="state" name="vehicle_plate_state">

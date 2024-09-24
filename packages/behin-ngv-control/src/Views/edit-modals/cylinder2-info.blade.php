@@ -15,14 +15,18 @@
 
     <div class="mb-3">
         <label for="" class="form-label">Cylinder Serial</label>
-        <input type="text" value="{{ $row->cylinder2()->serial }}" name="serial" class="form-control"
-            id="" placeholder="">
+        <input type="text" value="{{ $row->cylinder2()->serial }}" name="serial" class="form-control" id=""
+            placeholder="">
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Cylinder type</label>
-        <input type="text" value="{{ $row->cylinder2()->type }}" name="type" class="form-control"
-            id="" placeholder="">
+        <select name="type" id="" class="form-control">
+            @foreach (config('ngv_control.cylinder_type') as $item)
+                <option value="{{ $item }}" {{ $item === $row->cylinder2()->type ? 'selected' : '' }}>
+                    {{ $item }}</option>
+            @endforeach
+        </select>
     </div>
 
     <div class="mb-3">
@@ -40,37 +44,39 @@
     <div class="mb-3">
         <label for="" class="form-label">Cylinder image</label>
         @if ($row->cylinder2()->cylinder_image)
-            <a target="_blank" href="{{ url("public/". $row->cylinder2()->cylinder_image ) }}">download</a>
+            <a target="_blank" href="{{ url('public/' . $row->cylinder2()->cylinder_image) }}">download</a>
         @endif
-        <input type="file" name="cylinder_image" class="form-control"
-            id="" placeholder="">
+        <input type="file" name="cylinder_image" class="form-control" id="" placeholder="">
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Cylinder valve manufacturer</label>
-        <input type="text" value="{{ $row->cylinder2()->valve_manufacturer }}" name="valve_manufacturer" class="form-control"
-            id="" placeholder="">
+        <input type="text" value="{{ $row->cylinder2()->valve_manufacturer }}" name="valve_manufacturer"
+            class="form-control" id="" placeholder="">
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Cylinder valve serial</label>
-        <input type="text" value="{{ $row->cylinder2()->valve_serial }}" name="valve_serial" class="form-control"
-            id="" placeholder="">
+        <input type="text" value="{{ $row->cylinder2()->valve_serial }}" name="valve_serial"
+            class="form-control" id="" placeholder="">
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Cylinder valve type</label>
-        <input type="text" value="{{ $row->cylinder2()->valve_type }}" name="valve_type" class="form-control"
-            id="" placeholder="">
+        <select name="valve_type" id="" class="form-control">
+            @foreach (config('ngv_control.valve_type') as $item)
+                <option value="{{ $item }}" {{ $item === $row->cylinder2()->valve_type ? 'selected' : '' }}>
+                    {{ $item }}</option>
+            @endforeach
+        </select>
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Cylinder valve image</label>
         @if ($row->cylinder2()->valve_image)
-            <a target="_blank" href="{{ url("public/". $row->cylinder2()->valve_image ) }}">download</a>
+            <a target="_blank" href="{{ url('public/' . $row->cylinder2()->valve_image) }}">download</a>
         @endif
-        <input type="file" name="valve_image" class="form-control"
-            id="" placeholder="">
+        <input type="file" name="valve_image" class="form-control" id="" placeholder="">
     </div>
     {{-- <!-- Vehicle Model -->
 

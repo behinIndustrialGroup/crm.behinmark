@@ -41,7 +41,15 @@
     <div class="row mt-3">
         <input type="text" name="uniqueId" id="" class="form-control mb-3" value="{{ $row->unique_id }}" readonly>
         <div class="row col-sm-12 mb-3">
-            <label for="">{{ trans('Convertion Program') }}: </label>
+            <label for="">{{ trans('Retrofit Workshop') }}: </label>
+            <select name="retrofit_workshop" id="retrofit_workshop" class="mr-3" onchange="update_convertion_program()">
+                @foreach (config('ngv_control.retrofit_workshop_options') as $item)
+                    <option value="{{ $item }}">{{ $item }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="row col-sm-12 mb-3">
+            <label for="">{{ trans('Conversion Program') }}: </label>
             <select name="convertion_program" id="convertion_program" class="mr-3" onchange="update_convertion_program()">
                 @foreach (config('ngv_control.convertion_program_options') as $item)
                     <option value="{{ $item }}">{{ $item }}</option>
@@ -127,6 +135,7 @@
             var fd = new FormData();
             fd.append('uniqueId', '{{ $uniqueId }}')
             fd.append('convertion_program', $('#convertion_program').val())
+            fd.append('retrofit_workshop', $('#retrofit_workshop').val())
             url = '{{ route('ngvControl.vehicleOwner.store') }}'
             send_ajax_formdata_request(
                 url,

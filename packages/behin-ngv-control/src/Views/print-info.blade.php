@@ -1,5 +1,12 @@
 <hr>
 <div class="row" id="printable">
+    <div class="row col-sm-12">
+        <div class="">
+            <img src="{{ Url('public/behin/logo.png') }}" alt="" width="150">
+            <p>Retrofit Workshop: {{ $row->retrofit_workshop ?? '' }}</p>
+            <p>Serial: {{ $row->unique_id ?? '' }}</p>
+        </div>
+    </div>
     <h2 class="text-center col-sm-12">Vehicle and Owner Information</h2>
 
     <!-- اطلاعات شخصی -->
@@ -44,6 +51,10 @@
             <tr>
                 <th>{{ trans('Year of Manufacture') }}</th>
                 <td>{{ $row->vehicle_produce_year ?? '' }}</td>
+            </tr>
+            <tr>
+                <th>{{ trans('VIN') }}</th>
+                <td>{{ $row->vehicle_vin ?? '' }}</td>
             </tr>
             <tr>
                 <th>{{ trans('Vehicle Plate') }}</th>
@@ -206,12 +217,12 @@
             @endif
         @endforeach
 
-        <div class="row col-sm-12">
+        <div class="row col-sm-12" style="font-weight: bold">
             <div class="print-section col-sm-6">
                 Vehicle Owner Signature
             </div>
             <div class="print-section col-sm-6">
-                Supervisor Signature
+                Supervisor Signature: {{ getUserById($row->registeror_user_id)->name }}
             </div>
         </div>
     @else
