@@ -42,7 +42,7 @@
 	<div class="limiter">
 		@include('behin-layouts.alert')
 
-		<div class="container-login100" style="background-image: url('{{ url('public/behin/login/images/bg-01.jpg') }}');">
+		<div class="container-login100" style="background-color: green');">
 			@yield('content')
 		</div>
 	</div>
