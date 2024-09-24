@@ -19,7 +19,8 @@ class CreateNgvInfoController extends Controller
         $uniqueId::setSeprator('-');
         $uniqueId = $uniqueId::create();
         return NgvInfo::create([
-            'unique_id' => $uniqueId
+            'unique_id' => $uniqueId,
+            'registeror_user_id' => Auth::id()
         ]);
     }
 }
