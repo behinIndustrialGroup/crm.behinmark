@@ -24,7 +24,7 @@ class BehinNgvWorkshopControlServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom(__DIR__ . '/Migrations');
-        $this->loadRoutesFrom(__DIR__ . '/Routes/web.php');
+        // $this->loadRoutesFrom(__DIR__ . '/Routes/web.php');
         $this->loadViewsFrom(__DIR__. '/Views', 'BehinNgvWorkshopControlViews');
         $this->loadJsonTranslationsFrom(__DIR__. '/Lang');
     }

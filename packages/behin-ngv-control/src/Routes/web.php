@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 Route::name('ngvControl.')->prefix('ngv-control')->middleware(['web', 'auth'])->group(function () {
-    Route::get('register-form/{uniqueId}', [RegisterFormController::class, 'index'])->name('registerForm');
+    Route::get('register-form/{uniqueId?}', [RegisterFormController::class, 'index'])->name('registerForm');
     Route::any('create-or-edit-form/{modalName}', [RegisterFormController::class, 'openEditModalView'])->name('editModalFrom');
 
     Route::any('print-ngv-info-view', [GetNgvInfoController::class, 'printView'])->name('printView');
