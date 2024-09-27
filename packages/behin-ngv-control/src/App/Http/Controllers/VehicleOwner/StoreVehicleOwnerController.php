@@ -4,10 +4,12 @@ namespace BehinNgvControl\App\Http\Controllers\VehicleOwner;
 use App\Http\Controllers\Controller;
 use BehinFileControl\Controllers\FileController;
 use BehinNgvControl\App\Http\Controllers\GetNgvInfoController;
+use BehinNgvWorkshopControl\App\Http\Controllers\GetWorkshopController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class StoreVehicleOwnerController extends Controller
 {
@@ -21,6 +23,9 @@ class StoreVehicleOwnerController extends Controller
         }
 
         $data = $request->except('uniqueId');
+
+        $data['retrofit_workshop'] = GetWorkshopController::getByWorkshopId($request->workshop_id)?->name;
+
         $personal_image = $request->file('owner_personal_image');
         if(isset($personal_image)){
             $result = FileController::store($personal_image, 'ngv-info-docs');

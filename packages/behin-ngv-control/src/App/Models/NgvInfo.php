@@ -10,6 +10,7 @@ use BehinNgvControl\App\Http\Controllers\FuelSolenoidInfo\GetFuelSolenoidInfoCon
 use BehinNgvControl\App\Http\Controllers\InjectorInfo\GetInjectorInfoController;
 use BehinNgvControl\App\Http\Controllers\KitInfo\GetKitInfoController;
 use BehinNgvControl\App\Http\Controllers\RegulatorInfo\GetRegulatorInfoController;
+use BehinNgvWorkshopControl\App\Models\BehinRetrofitWorkshop;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -38,50 +39,74 @@ class NgvInfo extends Model
         'convertion_program',
         'registeror_user_id',
         'retrofit_workshop',
-        'vehicle_vin'
+        'vehicle_vin',
+        'workshop_id',
+        'approver_supervisor_user_id',
+        'supervisor_approval',
+        'approver_workshop_manager_user_id',
+        'workshop_manager_approval'
     ];
 
-    public function kit(){
+    public function workshop(){
+        return BehinRetrofitWorkshop::find($this->workshop_id);
+    }
+
+    public function registeror(){
+        return getUserById($this->registeror_user_id);
+    }
+
+    public function kit()
+    {
         return GetKitInfoController::getFirstByUniqueId($this->unique_id);
     }
 
-    public function cylinder1($autoCreate = true){
+    public function cylinder1($autoCreate = true)
+    {
         return GetCylinderInfoController::getFirstByUniqueId($this->unique_id, $autoCreate);
     }
 
-    public function cylinder2($autoCreate = true){
+    public function cylinder2($autoCreate = true)
+    {
         return GetCylinderInfoController::getSecondByUniqueId($this->unique_id, $autoCreate);
     }
 
-    public function cylinder3($autoCreate = true){
+    public function cylinder3($autoCreate = true)
+    {
         return GetCylinderInfoController::getThirdByUniqueId($this->unique_id, $autoCreate);
     }
 
-    public function regulator(){
+    public function regulator()
+    {
         return GetRegulatorInfoController::getFirstByUniqueId($this->unique_id);
     }
 
-    public function filling_valve(){
+    public function filling_valve()
+    {
         return GetFillingValveInfoController::getFirstByUniqueId($this->unique_id);
     }
 
-    public function cutoff_valve(){
+    public function cutoff_valve()
+    {
         return GetCutoffValveInfoController::getFirstByUniqueId($this->unique_id);
     }
 
-    public function ecu(){
+    public function ecu()
+    {
         return GetEcuInfoController::getFirstByUniqueId($this->unique_id);
     }
 
-    public function fuel_solenoid(){
+    public function fuel_solenoid()
+    {
         return GetFuelSolenoidInfoController::getFirstByUniqueId($this->unique_id);
     }
 
-    public function injector($autoCreate = true){
+    public function injector($autoCreate = true)
+    {
         return GetInjectorInfoController::getFirstByUniqueId($this->unique_id, $autoCreate);
     }
 
-    public function injector2($autoCreate = true){
+    public function injector2($autoCreate = true)
+    {
         return GetInjectorInfoController::getSecondByUniqueId($this->unique_id, $autoCreate);
     }
 }

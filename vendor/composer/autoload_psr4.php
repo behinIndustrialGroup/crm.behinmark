@@ -97,6 +97,7 @@ return array(
     'Behin\\Cities\\' => array($baseDir . '/packages/behin-cities/src'),
     'BehinVehicleRegistration\\' => array($baseDir . '/packages/behin-vehicle-registration/src'),
     'BehinUserRoles\\' => array($baseDir . '/packages/behin-user-roles/src'),
+    'BehinNgvWorkshopControl\\' => array($baseDir . '/packages/behin-ngv-workshop-control/src'),
     'BehinNgvControl\\' => array($baseDir . '/packages/behin-ngv-control/src'),
     'BehinInit\\' => array($baseDir . '/packages/behin-init/src'),
     'BehinFileControl\\' => array($baseDir . '/packages/behin-file-control/src'),

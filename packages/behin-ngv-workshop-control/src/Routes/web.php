@@ -6,13 +6,11 @@ use BehinNgvControl\App\Http\Controllers\EcuInfo\StoreEcuInfoController;
 use BehinNgvControl\App\Http\Controllers\FillingValveInfo\StoreFillingValveInfoController;
 use BehinNgvControl\App\Http\Controllers\FuelSolenoidInfo\StoreFuelSolenoidInfoController;
 use BehinNgvControl\App\Http\Controllers\GetNgvInfoController;
-use BehinNgvControl\App\Http\Controllers\GetNgvInfoViewController;
 use BehinNgvControl\App\Http\Controllers\GetPartialViewController;
 use BehinNgvControl\App\Http\Controllers\InjectorInfo\StoreInjectorInfoController;
 use BehinNgvControl\App\Http\Controllers\KitInfo\StoreKitInfoController;
 use BehinNgvControl\App\Http\Controllers\RegisterFormController;
 use BehinNgvControl\App\Http\Controllers\RegulatorInfo\StoreRegulatorInfoController;
-use BehinNgvControl\App\Http\Controllers\StoreApprovalsController;
 use BehinNgvControl\App\Http\Controllers\VehicleInfo\StoreVehicleInfoController;
 use BehinNgvControl\App\Http\Controllers\VehicleOwner\StoreVehicleOwnerController;
 
@@ -21,7 +19,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 Route::name('ngvControl.')->prefix('ngv-control')->middleware(['web', 'auth'])->group(function () {
-    Route::get('register-form/{uniqueId}', [RegisterFormController::class, 'index'])->name('registerForm');
+    Route::get('register-form/{unqiueId?}', [RegisterFormController::class, 'index'])->name('registerForm');
     Route::any('create-or-edit-form/{modalName}', [RegisterFormController::class, 'openEditModalView'])->name('editModalFrom');
 
     Route::any('print-ngv-info-view', [GetNgvInfoController::class, 'printView'])->name('printView');
@@ -77,15 +75,5 @@ Route::name('ngvControl.')->prefix('ngv-control')->middleware(['web', 'auth'])->
 
     Route::name('injector2Info.')->prefix('injector2-info')->group(function (){
         Route::any('store', [StoreInjectorInfoController::class, 'storeInjectorNo2'])->name('store');
-    });
-
-    Route::name('approval.')->prefix('approval')->group(function (){
-        Route::any('set-supervisor-approval', [StoreApprovalsController::class, 'storeSupervisorApproval'])->name('storeSupervisorApproval');
-        Route::any('my-list', [GetNgvInfoController::class, 'getMyList'])->name('myList');
-    });
-
-    Route::name('list.')->prefix('list')->group(function (){
-        Route::any('my-list-view', [GetNgvInfoViewController::class, 'getMyListView'])->name('myListView');
-        Route::any('my-list', [GetNgvInfoController::class, 'getMyList'])->name('myList');
     });
 });

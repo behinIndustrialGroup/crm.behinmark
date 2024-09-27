@@ -13,7 +13,7 @@ class RegisterFormController extends Controller
     public function index($uniqueId = null){
         if(!$uniqueId){
             $uniqueId = CreateNgvInfoController::create()->unique_id;
-            return redirect()->route('ngvControl.registerForm', [ 'unqiueId' => $uniqueId ]);
+            return redirect()->route('ngvControl.registerForm', [ 'uniqueId' => $uniqueId ]);
         }
         $row = GetNgvInfoController::getByUniqueId($uniqueId);
         return view('BehinNgvControlViews::register-form')->with([

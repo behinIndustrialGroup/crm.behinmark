@@ -4,6 +4,7 @@ use Behin\Cities\CityProvider;
 use BehinFileControl\BehinFileControlProvider;
 use BehinInit\BehinInitProvider;
 use BehinNgvControl\BehinNgvControlServiceProvider;
+use BehinNgvWorkshopControl\BehinNgvWorkshopControlServiceProvider;
 use BehinUserRoles\UserRolesServiceProvider;
 use BehinVehicleRegistration\PackageProviders;
 use Illuminate\Support\Facades\Facade;
@@ -199,6 +200,7 @@ return [
         UserProfileProvider::class,
         BehinNgvControlServiceProvider::class,
         CityProvider::class,
+        BehinNgvWorkshopControlServiceProvider::class,
         /*
          * Application Service Providers...
          */

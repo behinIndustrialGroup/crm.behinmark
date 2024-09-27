@@ -36,11 +36,13 @@
             "BehinUserRoles\\": "packages/behin-user-roles/src/",
             "UserProfile\\": "packages/behin-user-profile/src/",
             "BehinNgvControl\\": "packages/behin-ngv-control/src/",
-            "Behin\\Cities\\": "packages/behin-cities/src/"
+            "Behin\\Cities\\": "packages/behin-cities/src/",
+            "BehinNgvWorkshopControl\\": "packages/behin-ngv-workshop-control/src/"
         },
         "files": [
             "packages/behin-init/src/App/Helpers/behin-helpers.php",
             "packages/behin-ngv-control/src/App/Helpers/ngv-control-helpers.php",
+            "packages/behin-ngv-workshop-control/src/App/Helpers/ngv-workshop-control-helpers.php",
             "packages/behin-cities/src/Helpers/city-helpers.php"
         ]
     },

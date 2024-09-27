@@ -38,5 +38,6 @@ return array(
     '320163ac6b93aebe3dc25b60a0533d56' => $vendorDir . '/spatie/laravel-ignition/src/helpers.php',
     '1dd62bb642d9cb89aae0bb1db4f26894' => $baseDir . '/packages/behin-init/src/App/Helpers/behin-helpers.php',
     'c54afa99224b0250e2311f334fbfa821' => $baseDir . '/packages/behin-ngv-control/src/App/Helpers/ngv-control-helpers.php',
+    'ab5cc6291ecf3ed55bc67b85780f41c1' => $baseDir . '/packages/behin-ngv-workshop-control/src/App/Helpers/ngv-workshop-control-helpers.php',
     '1a3fd2fa8a576bba2df26595f525fef0' => $baseDir . '/packages/behin-cities/src/Helpers/city-helpers.php',
 );

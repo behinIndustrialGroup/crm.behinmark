@@ -42,9 +42,9 @@
         <input type="text" name="uniqueId" id="" class="form-control mb-3" value="{{ $row->unique_id }}" readonly>
         <div class="row col-sm-12 mb-3">
             <label for="">{{ trans('Retrofit Workshop') }}: </label>
-            <select name="workshop_id" id="workshop_id" class="mr-3" onchange="update_convertion_program()">
-                @foreach (getAllRetrofits() as $item)
-                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+            <select name="retrofit_workshop" id="retrofit_workshop" class="mr-3" onchange="update_convertion_program()">
+                @foreach (config('ngv_control.retrofit_workshop_options') as $item)
+                    <option value="{{ $item }}">{{ $item }}</option>
                 @endforeach
             </select>
         </div>
@@ -68,41 +68,6 @@
             <legend>
                 <label for="">{{ trans('Parts') }}</label>
             </legend>
-            <button class="btn btn-success mr-3 mb-3"
-                onclick="{{ "open_kit_form('$uniqueId')" }}">{{ trans('Kit Information') }}</button>
-
-            <div class="" id="part-modal-buttons">
-
-            </div>
-
-        </fieldset>
-
-    </div>
-
-    <div class="row mt-3">
-        <fieldset>
-            <legend>
-                <label for="">{{ trans('Approvals') }}</label>
-            </legend>
-            @if ($row->workshop()->workshop_supervisor_user_id === auth()->user()->id)
-                <button class="btn btn-danger" onclick="storeSupervisorApproval(1)">
-                    {{ trans('Approved as Supervisor') }}
-                </button>
-                <script>
-                    function storeSupervisorApproval(approval){
-                        var fd = new FormData();
-                        fd.append('supervisor_approval', approval);
-                        send_ajax_formdata_request(
-                            '{{ route('ngvControl.approval.storeSupervisorApproval') }}',
-                            fd,
-                            function(response){
-                                console.log(response);
-
-                            }
-                        )
-                    }
-                </script>
-            @endif
             <button class="btn btn-success mr-3 mb-3"
                 onclick="{{ "open_kit_form('$uniqueId')" }}">{{ trans('Kit Information') }}</button>
 
@@ -170,7 +135,7 @@
             var fd = new FormData();
             fd.append('uniqueId', '{{ $uniqueId }}')
             fd.append('convertion_program', $('#convertion_program').val())
-            fd.append('workshop_id', $('#workshop_id').val())
+            fd.append('retrofit_workshop', $('#retrofit_workshop').val())
             url = '{{ route('ngvControl.vehicleOwner.store') }}'
             send_ajax_formdata_request(
                 url,

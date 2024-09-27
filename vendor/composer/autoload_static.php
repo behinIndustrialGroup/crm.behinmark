@@ -39,6 +39,7 @@ class ComposerStaticInit1eca8ae74d2e5fc23025091375b98a32
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
         '1dd62bb642d9cb89aae0bb1db4f26894' => __DIR__ . '/../..' . '/packages/behin-init/src/App/Helpers/behin-helpers.php',
         'c54afa99224b0250e2311f334fbfa821' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Helpers/ngv-control-helpers.php',
+        'ab5cc6291ecf3ed55bc67b85780f41c1' => __DIR__ . '/../..' . '/packages/behin-ngv-workshop-control/src/App/Helpers/ngv-workshop-control-helpers.php',
         '1a3fd2fa8a576bba2df26595f525fef0' => __DIR__ . '/../..' . '/packages/behin-cities/src/Helpers/city-helpers.php',
     );
 
@@ -184,6 +185,7 @@ class ComposerStaticInit1eca8ae74d2e5fc23025091375b98a32
             'Behin\\Cities\\' => 13,
             'BehinVehicleRegistration\\' => 25,
             'BehinUserRoles\\' => 15,
+            'BehinNgvWorkshopControl\\' => 24,
             'BehinNgvControl\\' => 16,
             'BehinInit\\' => 10,
             'BehinFileControl\\' => 17,
@@ -564,6 +566,10 @@ class ComposerStaticInit1eca8ae74d2e5fc23025091375b98a32
         array (
             0 => __DIR__ . '/../..' . '/packages/behin-user-roles/src',
         ),
+        'BehinNgvWorkshopControl\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/packages/behin-ngv-workshop-control/src',
+        ),
         'BehinNgvControl\\' => 
         array (
             0 => __DIR__ . '/../..' . '/packages/behin-ngv-control/src',
@@ -639,7 +645,10 @@ class ComposerStaticInit1eca8ae74d2e5fc23025091375b98a32
         'BehinNgvControl\\App\\Http\\Controllers\\EcuInfo\\StoreEcuInfoController' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Http/Controllers/EcuInfo/StoreEcuInfoController.php',
         'BehinNgvControl\\App\\Http\\Controllers\\FillingValveInfo\\GetFillingValveInfoController' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Http/Controllers/FillingValveInfo/GetFillingValveInfoController.php',
         'BehinNgvControl\\App\\Http\\Controllers\\FillingValveInfo\\StoreFillingValveInfoController' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Http/Controllers/FillingValveInfo/StoreFillingValveInfoController.php',
+        'BehinNgvControl\\App\\Http\\Controllers\\FuelSolenoidInfo\\GetFuelSolenoidInfoController' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Http/Controllers/FuelSolenoidInfo/GetFuelSolenoidInfoController.php',
+        'BehinNgvControl\\App\\Http\\Controllers\\FuelSolenoidInfo\\StoreFuelSolenoidInfoController' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Http/Controllers/FuelSolenoidInfo/StoreFuelSolenoidInfoController.php',
         'BehinNgvControl\\App\\Http\\Controllers\\GetNgvInfoController' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Http/Controllers/GetNgvInfoController.php',
+        'BehinNgvControl\\App\\Http\\Controllers\\GetPartialViewController' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Http/Controllers/GetPartialViewController.php',
         'BehinNgvControl\\App\\Http\\Controllers\\InjectorInfo\\GetInjectorInfoController' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Http/Controllers/InjectorInfo/GetInjectorInfoController.php',
         'BehinNgvControl\\App\\Http\\Controllers\\InjectorInfo\\StoreInjectorInfoController' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Http/Controllers/InjectorInfo/StoreInjectorInfoController.php',
         'BehinNgvControl\\App\\Http\\Controllers\\KitInfo\\GetKitInfoController' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Http/Controllers/KitInfo/GetKitInfoController.php',
@@ -653,11 +662,13 @@ class ComposerStaticInit1eca8ae74d2e5fc23025091375b98a32
         'BehinNgvControl\\App\\Models\\CylinderInfo' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Models/CylinderInfo.php',
         'BehinNgvControl\\App\\Models\\EcuInfo' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Models/EcuInfo.php',
         'BehinNgvControl\\App\\Models\\FillingValveInfo' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Models/FillingValveInfo.php',
+        'BehinNgvControl\\App\\Models\\FuelSolenoidInfo' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Models/FuelSolenoidInfo.php',
         'BehinNgvControl\\App\\Models\\InjectorInfo' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Models/InjectorInfo.php',
         'BehinNgvControl\\App\\Models\\KitInfo' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Models/KitInfo.php',
         'BehinNgvControl\\App\\Models\\NgvInfo' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Models/NgvInfo.php',
         'BehinNgvControl\\App\\Models\\RegulatorInfo' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/App/Models/RegulatorInfo.php',
         'BehinNgvControl\\BehinNgvControlServiceProvider' => __DIR__ . '/../..' . '/packages/behin-ngv-control/src/BehinNgvControlServiceProvider.php',
+        'BehinNgvWorkshopControl\\BehinNgvWorkshopControlServiceProvider' => __DIR__ . '/../..' . '/packages/behin-ngv-workshop-control/src/BehinNgvWorkshopControlServiceProvider.php',
         'BehinUserRoles\\Controllers\\GetMethodsController' => __DIR__ . '/../..' . '/packages/behin-user-roles/src/Controllers/GetMethodsController.php',
         'BehinUserRoles\\Controllers\\GetRoleController' => __DIR__ . '/../..' . '/packages/behin-user-roles/src/Controllers/GetRoleController.php',
         'BehinUserRoles\\Controllers\\UserController' => __DIR__ . '/../..' . '/packages/behin-user-roles/src/Controllers/UserController.php',
