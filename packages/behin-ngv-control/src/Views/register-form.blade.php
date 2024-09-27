@@ -85,26 +85,47 @@
                 <label for="">{{ trans('Approvals') }}</label>
             </legend>
             @if ($row->workshop()->workshop_supervisor_user_id === auth()->user()->id)
-                <button class="btn btn-danger" onclick="storeSupervisorApproval(1)">
+                <button class="btn btn-danger mr-3" onclick="storeSupervisorApproval(1)">
                     {{ trans('Approved as Supervisor') }}
                 </button>
                 <script>
                     function storeSupervisorApproval(approval){
                         var fd = new FormData();
+                        fd.append('uniqueId', '{{ $uniqueId }}');
                         fd.append('supervisor_approval', approval);
                         send_ajax_formdata_request(
                             '{{ route('ngvControl.approval.storeSupervisorApproval') }}',
                             fd,
                             function(response){
                                 console.log(response);
-
+                                show_message('{{ trans('Approveed') }}')
+                                update_ngv_informations_div()
                             }
                         )
                     }
                 </script>
             @endif
-            <button class="btn btn-success mr-3 mb-3"
-                onclick="{{ "open_kit_form('$uniqueId')" }}">{{ trans('Kit Information') }}</button>
+            @if ($row->workshop()->workshop_manager_user_id === auth()->user()->id)
+                <button class="btn btn-danger mr-3" onclick="storeWorkshopManagerApproval(1)">
+                    {{ trans('Approved as Workshop Manager') }}
+                </button>
+                <script>
+                    function storeWorkshopManagerApproval(approval){
+                        var fd = new FormData();
+                        fd.append('uniqueId', '{{ $uniqueId }}');
+                        fd.append('workshop_manager_approval', approval);
+                        send_ajax_formdata_request(
+                            '{{ route('ngvControl.approval.storeWorkshopManagerApproval') }}',
+                            fd,
+                            function(response){
+                                console.log(response);
+                                show_message('{{ trans('Approveed') }}')
+                                update_ngv_informations_div()
+                            }
+                        )
+                    }
+                </script>
+            @endif
 
             <div class="" id="part-modal-buttons">
 
@@ -117,10 +138,7 @@
     <div id="print-div">
 
     </div>
-    <!-- Print Button-->
-    <div class="text-center mt-4">
-        <button onclick="printDiv('print-div')" class="btn btn-primary">{{ trans('Print') }}</button>
-    </div>
+
 @endsection
 
 @section('script')

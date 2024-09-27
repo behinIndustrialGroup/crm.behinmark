@@ -22,11 +22,41 @@ class StoreApprovalsController extends Controller
             ], 402);
         }
 
-        $data = $request->except('uniqueId');
+        $data = $request->only('supervisor_approval');
 
-        $retrofit_workshop = GetWorkshopController::getByWorkshopId($request->workshop_id);
+        $retrofit_workshop = GetWorkshopController::getByWorkshopId($row->workshop_id);
+        if(Auth::id() != $retrofit_workshop->workshop_supervisor_user_id){
+            return response()->json([
+                'msg' => trans("You are not supervisor of this workshop")
+            ], 403);
+        }
 
+        $data['approver_supervisor_user_id'] = Auth::id();
+        $row->update($data);
+        return response()->json([
+            'msg' => trans("Information stored")
+        ]);
+    }
 
+    public function storeWorkshopManagerApproval(Request $request){
+        $uniqueId = $request->uniqueId;
+        $row = GetNgvInfoController::getByUniqueId($uniqueId);
+        if(!$row){
+            return response()->json([
+                'msg' => trans("There is no record with this unique id")
+            ], 402);
+        }
+
+        $data = $request->only('workshop_manager_approval');
+
+        $retrofit_workshop = GetWorkshopController::getByWorkshopId($row->workshop_id);
+        if(Auth::id() != $retrofit_workshop->workshop_manager_user_id){
+            return response()->json([
+                'msg' => trans("You are not workshop manager of this workshop")
+            ], 403);
+        }
+
+        $data['approver_workshop_manager_user_id'] = Auth::id();
         $row->update($data);
         return response()->json([
             'msg' => trans("Information stored")

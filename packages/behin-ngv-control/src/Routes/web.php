@@ -81,7 +81,7 @@ Route::name('ngvControl.')->prefix('ngv-control')->middleware(['web', 'auth'])->
 
     Route::name('approval.')->prefix('approval')->group(function (){
         Route::any('set-supervisor-approval', [StoreApprovalsController::class, 'storeSupervisorApproval'])->name('storeSupervisorApproval');
-        Route::any('my-list', [GetNgvInfoController::class, 'getMyList'])->name('myList');
+        Route::any('set-workshop-manager-approval', [StoreApprovalsController::class, 'storeWorkshopManagerApproval'])->name('storeWorkshopManagerApproval');
     });
 
     Route::name('list.')->prefix('list')->group(function (){

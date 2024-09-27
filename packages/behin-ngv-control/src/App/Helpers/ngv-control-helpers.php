@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use BehinNgvControl\App\Http\Controllers\GetNgvInfoController;
+use UserProfile\Models\UserProfile;
 
 if (!function_exists('displayPartsInformation')) {
     function displayPartsInformation($uniqueId) {
@@ -28,5 +29,11 @@ if (!function_exists('getKitParts')) {
 if (!function_exists('getUserById')) {
     function getUserById($id) {
         return User::find($id);
+    }
+}
+
+if (!function_exists('getUserProfileById')) {
+    function getUserProfileById($id) {
+        return UserProfile::where('user_id', $id)->first();
     }
 }

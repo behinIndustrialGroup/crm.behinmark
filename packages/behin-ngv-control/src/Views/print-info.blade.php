@@ -218,20 +218,35 @@
         @endforeach
 
         <div class="row col-sm-12" style="font-weight: bold">
-            <div class="print-section col-sm-6">
+            <div class="print-section col-sm-4">
                 Vehicle Owner Signature
             </div>
-            <div class="print-section col-sm-6">
-                Supervisor Signature: {{ getUserById($row->registeror_user_id)->name }}
+            <div class="print-section col-sm-4">
+                Supervisor Signature: {{ getUserById($row->approver_supervisor_user_id)?->name }}
+                @if ($row->supervisor_approval)
+                    <img width="100"
+                        src="data:image/jpg;base64,{{ base64_encode(getUserProfileById($row->supervisor_approval)->signature_image) }}"
+                        alt="">
+                @endif
+            </div>
+            <div class="print-section col-sm-4">
+                Workshop Manager Signature: {{ getUserById($row->approver_workshop_manager_user_id)?->name }}
+                @if ($row->workshop_manager_approval)
+                    <img width="100"
+                        src="data:image/jpg;base64,{{ base64_encode(getUserProfileById($row->workshop_manager_approval)->signature_image) }}"
+                        alt="">
+                @endif
             </div>
         </div>
-    @else
-        <p style="color: red">
-            {{ trans('NOTICE: For Show Parts Information, Enter Kit Information First') }}
-        </p>
-    @endif
-
-
-
-
 </div>
+@if ($row->supervisor_approval && $row->workshop_manager_approval)
+    <!-- Print Button-->
+    <div class="text-center mt-4">
+        <button onclick="printDiv('printable')" class="btn btn-primary">{{ trans('Print') }}</button>
+    </div>
+@endif
+@else
+<p style="color: red">
+    {{ trans('NOTICE: For Show Parts Information, Enter Kit Information First') }}
+</p>
+@endif
