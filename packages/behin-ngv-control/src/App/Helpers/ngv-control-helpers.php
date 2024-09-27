@@ -26,6 +26,15 @@ if (!function_exists('getKitParts')) {
     }
 }
 
+if (!function_exists('getApprovalDivView')) {
+    function getApprovalDivView($uniqueId) {
+        $row = GetNgvInfoController::getByUniqueId($uniqueId);
+        return view('BehinNgvControlViews::approval-div')->with([
+            'row' => $row
+        ]);
+    }
+}
+
 if (!function_exists('getUserById')) {
     function getUserById($id) {
         return User::find($id);

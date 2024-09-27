@@ -27,6 +27,12 @@ Route::name('ngvControl.')->prefix('ngv-control')->middleware(['web', 'auth'])->
     Route::any('print-ngv-info-view', [GetNgvInfoController::class, 'printView'])->name('printView');
     Route::any('update-part-modal-buttons-view', [GetPartialViewController::class, 'getOpenPartModalButtons'])->name('getOpenPartModalButtons');
 
+    Route::name('updatePartial.')->prefix('update-partial')->group(function (){
+        Route::any('approval-div/{uniqueId}', function($uniqueId){
+            return getApprovalDivView($uniqueId);
+        })->name('approvalDiv');
+    });
+
     Route::name('vehicleOwner.')->prefix('vehicle-owner')->group(function (){
         Route::any('store', [StoreVehicleOwnerController::class, 'store'])->name('store');
     });

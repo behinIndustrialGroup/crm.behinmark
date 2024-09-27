@@ -22,6 +22,7 @@ return [
             'fa_name' => 'Ngv Control',
             'submenu' => [
                 'create' => [ 'fa_name' => 'New', 'route-name' => 'ngvControl.registerForm', 'route-url' => '' ],
+                'list' => [ 'fa_name' => 'My List', 'route-name' => 'ngvControl.list.myListView', 'route-url' => '' ],
             ]
         ],
         'users' => [
