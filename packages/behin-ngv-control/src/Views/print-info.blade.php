@@ -4,6 +4,7 @@
         <div class="">
             <img src="{{ Url('public/behin/logo.png') }}" alt="" width="150">
             <p>Retrofit Workshop: {{ $row->retrofit_workshop ?? '' }}</p>
+            <p>Conversion Program: {{ $row->convertion_program ?? '' }}</p>
             <p>Serial: {{ $row->unique_id ?? '' }}</p>
         </div>
     </div>
