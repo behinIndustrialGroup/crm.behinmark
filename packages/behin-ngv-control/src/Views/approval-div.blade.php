@@ -6,7 +6,7 @@
         <legend>
             <label for=''>{{ trans('Approvals') }}</label>
         </legend>
-        @if ($row->workshop()?->workshop_supervisor_user_id === auth()->user()->id)
+        @if ($row->workshop()?->workshop_supervisor_user_id == auth()->user()->id)
             <button class='btn btn-danger mr-3' onclick='storeSupervisorApproval(1)'>
                 {{ trans('Approved as Supervisor') }}
             </button>
@@ -27,7 +27,7 @@
                 }
             </script>
         @endif
-        @if ($row->workshop()?->workshop_manager_user_id === auth()->user()->id)
+        @if ($row->workshop()?->workshop_manager_user_id == auth()->user()->id)
             <button class='btn btn-danger mr-3' onclick='storeWorkshopManagerApproval(1)'>
                 {{ trans('Approved as Workshop Manager') }}
             </button>
