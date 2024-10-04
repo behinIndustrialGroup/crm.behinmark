@@ -40,17 +40,17 @@
 
     <div class="mb-3">
         <label for="personalImage" class="form-label">{{ trans('Personal Image') }}</label>
-        <input type="file" name="owner_personal_image" id="" class="form-control" accept="image/*" capture="camera">
+        <input type="file" name="owner_personal_image" id="" class="form-control" accept="image/*">
     </div>
 
     <div class="mb-3">
         <label for="frontNationalCardImage" class="form-label">{{ trans('National Card Image (Front)') }}</label>
-        <input type="file" name="owner_front_national_card" id="" class="form-control" accept="image/*" capture="camera">
+        <input type="file" name="owner_front_national_card" id="" class="form-control" accept="image/*">
     </div>
 
     <div class="mb-3">
         <label for="backNationalCardImage" class="form-label">{{ trans('National Card Image (Back)') }}</label>
-        <input type="file" name="owner_back_national_card" id="" class="form-control" accept="image/*" capture="camera">
+        <input type="file" name="owner_back_national_card" id="" class="form-control" accept="image/*">
     </div>
 </form>
 <button class="btn btn-success" onclick="submit_owner_info()">{{ trans('Submit') }}</button>

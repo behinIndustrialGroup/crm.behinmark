@@ -84,13 +84,13 @@
     <div class="mb-3">
         <label for="" class="form-label">{{ trans('Vehicle Card Image') }}</label>
         <input type="file" name="vehicle_card_image" id="" class="form-control" accept="image/*"
-            capture="camera">
+           >
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">{{ trans('Vehicle Image (Plaque)') }}</label>
         <input type="file" name="vehicle_plaque_image" id="" class="form-control" accept="image/*"
-            capture="camera">
+           >
     </div> --}}
 </form>
 <button class="btn btn-success" onclick="submit_cylinder3_info()">{{ trans('Submit') }}</button>
