@@ -44,7 +44,10 @@ class NgvInfo extends Model
         'approver_supervisor_user_id',
         'supervisor_approval',
         'approver_workshop_manager_user_id',
-        'workshop_manager_approval'
+        'workshop_manager_approval',
+        'date',
+        'vehicle_front_after_conversion',
+        'vehicle_back_after_conversion',
     ];
 
     public function workshop(){

@@ -3,9 +3,8 @@
         $uniqueId = $row->unique_id;
     @endphp
     <fieldset>
-        <legend>
-            <label for=''>{{ trans('Approvals') }}</label>
-        </legend>
+            <p class="section-title">{{ trans('Approvals') }}</p>
+
         @if ($row->workshop()?->workshop_supervisor_user_id == auth()->user()->id)
             <button class='btn btn-danger mr-3' onclick='storeSupervisorApproval(1)'>
                 {{ trans('Approved as Supervisor') }}

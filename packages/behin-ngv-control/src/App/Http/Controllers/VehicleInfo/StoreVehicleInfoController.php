@@ -39,6 +39,24 @@ class StoreVehicleInfoController extends Controller
             $data['vehicle_plaque_image'] = $result['dir'];
         }
 
+        $vehicle_front_after_conversion = $request->file('vehicle_front_after_conversion');
+        if(isset($vehicle_front_after_conversion)){
+            $result = FileController::store($vehicle_front_after_conversion, 'ngv-info-docs');
+            if($result['status'] != 200){
+                return response()->json($result, $result['status']);
+            }
+            $data['vehicle_front_after_conversion'] = $result['dir'];
+        }
+
+        $vehicle_back_after_conversion = $request->file('vehicle_back_after_conversion');
+        if(isset($vehicle_back_after_conversion)){
+            $result = FileController::store($vehicle_back_after_conversion, 'ngv-info-docs');
+            if($result['status'] != 200){
+                return response()->json($result, $result['status']);
+            }
+            $data['vehicle_back_after_conversion'] = $result['dir'];
+        }
+
         $row->update($data);
         return response()->json([
             'msg' => trans("Vehicle info informations stored")
