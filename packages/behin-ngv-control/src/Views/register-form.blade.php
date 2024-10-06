@@ -158,8 +158,6 @@
 
     </div>
 
-    <!-- Approval Div -->
-
 
     <!-- Print Div -->
     <div id="print-div"></div>
@@ -229,6 +227,7 @@
             });
         }
 
+        update_ngv_informations_div()
         function update_ngv_informations_div() {
             var fd = new FormData();
             fd.append('uniqueId', '{{ $uniqueId }}');

@@ -25,6 +25,16 @@ class GetWorkshopController extends Controller
     {
         return BehinRetrofitWorkshop::where('workshop_supervisor_user_id', Auth::id())
         ->orWhere('workshop_manager_user_id', Auth::id())
-        ->pluck('id');
+        ->get('id');
+    }
+    public static function getMyWorkshopIdsAsSupervisor()
+    {
+        return BehinRetrofitWorkshop::where('workshop_supervisor_user_id', Auth::id())
+        ->get('id');
+    }
+    public static function getMyWorkshopIdsAsManager()
+    {
+        return BehinRetrofitWorkshop::where('workshop_manager_user_id', Auth::id())
+        ->get('id');
     }
 }

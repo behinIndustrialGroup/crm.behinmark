@@ -226,7 +226,7 @@
                 Supervisor Signature: {{ getUserById($row->approver_supervisor_user_id)?->name }}
                 @if ($row->supervisor_approval)
                     <img width="100"
-                        src="data:image/jpg;base64,{{ base64_encode(getUserProfileById($row->supervisor_approval)->signature_image) }}"
+                        src="data:image/jpg;base64,{{ base64_encode(getUserProfileById($row->approver_supervisor_user_id)?->signature_image) }}"
                         alt="">
                 @endif
             </div>
@@ -234,7 +234,7 @@
                 Workshop Manager Signature: {{ getUserById($row->approver_workshop_manager_user_id)?->name }}
                 @if ($row->workshop_manager_approval)
                     <img width="100"
-                        src="data:image/jpg;base64,{{ base64_encode(getUserProfileById($row->workshop_manager_approval)->signature_image) }}"
+                        src="data:image/jpg;base64,{{ base64_encode(getUserProfileById($row->approver_workshop_manager_user_id)?->signature_image) }}"
                         alt="">
                 @endif
             </div>

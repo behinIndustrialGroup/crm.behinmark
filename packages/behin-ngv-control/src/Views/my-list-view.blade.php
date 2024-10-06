@@ -28,6 +28,12 @@
 
 @section('script')
     <script>
+        send_ajax_get_request(
+            '{{ route('ngvControl.list.myList') }}', function(res){
+                console.log(res);
+
+            }
+        )
         create_datatable(
             'my-list',
             '{{ route('ngvControl.list.myList') }}',
@@ -47,10 +53,13 @@
                 {data: 'owner_firstname', render: function(data, type, row){
                     return data + ' ' + row.owner_lastname;
                 }},
-                {data: 'unique_id', render: function(data){
+                {data: 'unique_id', render: function(data, type, row){
                     url = '{{ route("ngvControl.registerForm" ) }}';
                     url = url + '/' + data;
-                    return `<a href='${url}' target='_blank'>Show</a>`;
+                    return `<a href='${url}' target='_blank'>
+                        Show <br>
+                        as ${row.role}
+                        </a>`;
                 }}
             ]
         )
