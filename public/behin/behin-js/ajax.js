@@ -178,6 +178,7 @@ function open_admin_modal(url, title = '') {
         '<p>Modal content goes here.</p>' +
         '</div>' +
         '<div class="modal-footer">' +
+        '<button type="button" class="btn-close" onclick="close_admin_modal()" aria-label="Close">Close</button>' +
         '</div>' +
         '</div>' +
         '</div>' +
@@ -212,6 +213,7 @@ function open_admin_modal_with_data(data, title = '', customFun = null) {
         '<p>Modal content goes here.</p>' +
         '</div>' +
         '<div class="modal-footer">' +
+        '<button type="button" class="btn-close" onclick="close_admin_modal()" aria-label="Close">Close</button>' +
         '</div>' +
         '</div>' +
         '</div>' +

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Facade;
 use UserProfile\UserProfileProvider;
 
 return [
+    'version' => 'v1.2.2',
 
     /*
     |--------------------------------------------------------------------------
