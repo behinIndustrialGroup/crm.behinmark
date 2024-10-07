@@ -33,9 +33,9 @@
             placeholder="">
     </div>
 
-    <!-- Year of Manufacture -->
+    <!-- Plate Number -->
     <div class="row col-sm-12 mb-3">
-        <label for="state" class="form-label">Vehicle Registration Number</label>
+        <label for="state" class="form-label">Vehicle Registration Plate Number</label>
         <div class="row col-sm-12">
             <div class="col-sm-4">
                 <label for="state" class="form-label">State</label>
