@@ -48,6 +48,7 @@ class NgvInfo extends Model
         'date',
         'vehicle_front_after_conversion',
         'vehicle_back_after_conversion',
+        'registeror_approval'
     ];
 
     public function workshop(){
