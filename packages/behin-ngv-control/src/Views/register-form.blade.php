@@ -202,6 +202,7 @@
             });
         }
 
+        update_convertion_program()
         function update_convertion_program() {
             var fd = new FormData();
             fd.append('uniqueId', '{{ $uniqueId }}');

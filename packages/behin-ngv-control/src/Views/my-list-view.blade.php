@@ -19,6 +19,7 @@
                     <th>{{ trans('Vehicle Model') }}</th>
                     <th>{{ trans('Vehicle Registration Plate') }}</th>
                     <th>{{ trans('Vehicle Owner') }}</th>
+                    <th>{{ trans('Status') }}</th>
                     <th>{{ trans('Action') }}</th>
                 </tr>
             </thead>
@@ -53,6 +54,9 @@
                 {data: 'owner_firstname', render: function(data, type, row){
                     return data + ' ' + row.owner_lastname;
                 }},
+                {
+                    data: 'status'
+                },
                 {data: 'unique_id', render: function(data, type, row){
                     url = '{{ route("ngvControl.registerForm" ) }}';
                     url = url + '/' + data;

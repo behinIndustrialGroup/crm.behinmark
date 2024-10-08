@@ -8,7 +8,7 @@ if (!function_exists('displayPartsInformation')) {
     function displayPartsInformation($uniqueId) {
         $row = GetNgvInfoController::getByUniqueId($uniqueId);
         $kit = $row->kit();
-        if($kit->brand && $kit->serial && $kit->type){
+        if($kit->type){
             return true;
         }
         return false;

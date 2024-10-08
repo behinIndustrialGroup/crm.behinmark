@@ -218,11 +218,19 @@
             @endif
         @endforeach
 
-        <div class="row col-sm-12" style="font-weight: bold">
-            <div class="print-section col-sm-4">
+        <div class="row col-sm-12" style="font-weight: bold; height: 150px">
+            <div class="print-section col-sm-3">
                 Vehicle Owner Signature
             </div>
-            <div class="print-section col-sm-4">
+            <div class="print-section col-sm-3">
+                Registration Operator Signature: {{ getUserById($row->registeror_user_id)?->name }}
+                @if ($row->registeror_approval)
+                    <img width="100"
+                        src="data:image/jpg;base64,{{ base64_encode(getUserProfileById($row->registeror_user_id)?->signature_image) }}"
+                        alt="">
+                @endif
+            </div>
+            <div class="print-section col-sm-3">
                 Supervisor Signature: {{ getUserById($row->approver_supervisor_user_id)?->name }}
                 @if ($row->supervisor_approval)
                     <img width="100"
@@ -230,7 +238,7 @@
                         alt="">
                 @endif
             </div>
-            <div class="print-section col-sm-4">
+            <div class="print-section col-sm-3">
                 Workshop Manager Signature: {{ getUserById($row->approver_workshop_manager_user_id)?->name }}
                 @if ($row->workshop_manager_approval)
                     <img width="100"
@@ -240,7 +248,7 @@
             </div>
         </div>
 </div>
-@if ($row->supervisor_approval && $row->workshop_manager_approval)
+@if ($row->registeror_approval && $row->supervisor_approval && $row->workshop_manager_approval)
     <!-- Print Button-->
     <div class="text-center mt-4">
         <button onclick="printDiv('printable')" class="btn btn-primary">{{ trans('Print') }}</button>

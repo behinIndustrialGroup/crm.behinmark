@@ -13,6 +13,29 @@ use Illuminate\Support\Facades\Log;
 
 class StoreApprovalsController extends Controller
 {
+    public function storeRegisterorApproval(Request $request){
+        $uniqueId = $request->uniqueId;
+        $row = GetNgvInfoController::getByUniqueId($uniqueId);
+        if(!$row){
+            return response()->json([
+                'msg' => trans("There is no record with this unique id")
+            ], 402);
+        }
+
+        $data = $request->only('registeror_approval');
+
+        if(Auth::id() != $row->registeror_user_id){
+            return response()->json([
+                'msg' => trans("You are not registeror of this form")
+            ], 403);
+        }
+
+        $row->update($data);
+        return response()->json([
+            'msg' => trans("Information stored")
+        ]);
+    }
+
     public function storeSupervisorApproval(Request $request){
         $uniqueId = $request->uniqueId;
         $row = GetNgvInfoController::getByUniqueId($uniqueId);
