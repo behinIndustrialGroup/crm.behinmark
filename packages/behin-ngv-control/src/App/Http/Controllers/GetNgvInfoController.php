@@ -36,12 +36,12 @@ class GetNgvInfoController extends Controller
             // As a Supervisor
             $rows = $rows->where('supervisor_approval', 0);
         }
-        elseif($user->role_id === 3){
+        elseif($user->role_id === 4){
             // As a Workshop Manager
             $rows = $rows->where('workshop_manager_approval', 0);
 
         }
-        elseif($user->role_id === 4){
+        elseif($user->role_id === 3){
             // As an Operator
             $rows = $rows->where('registeror_approval', 0);
         }else{
