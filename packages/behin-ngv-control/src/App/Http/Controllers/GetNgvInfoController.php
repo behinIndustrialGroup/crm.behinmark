@@ -29,20 +29,20 @@ class GetNgvInfoController extends Controller
             $query->whereIn('workshop_id', $myWorkshopIds);
             $query->orWhere('registeror_user_id', $user->id);
         });
-        if($user->role_id === 1){
+        if($user->role_id == 1){
             // As an Admin
             $rows = NgvInfo::get();
         }
-        elseif($user->role_id === 2){
+        elseif($user->role_id == 2){
             // As a Supervisor
             $rows = $rows->where('supervisor_approval', 0)->get();
         }
-        elseif($user->role_id === 4){
+        elseif($user->role_id == 4){
             // As a Workshop Manager
             $rows = $rows->where('workshop_manager_approval', 0)->get();
 
         }
-        elseif($user->role_id === 3){
+        elseif($user->role_id == 3){
             // As an Operator
             $rows = $rows->where('registeror_approval', 0)->get();
         }else{
