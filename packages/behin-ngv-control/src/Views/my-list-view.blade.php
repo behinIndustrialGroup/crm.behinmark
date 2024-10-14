@@ -9,6 +9,7 @@
 
 @section('content')
     <div class="row mt-3 table-responsive">
+        <button class="btn btn-primary" onclick="allData()">{{ trans('Get All Data') }}</button>
         <table class="table table-stripped" id="my-list">
             <thead>
                 <tr>
@@ -29,12 +30,7 @@
 
 @section('script')
     <script>
-        send_ajax_get_request(
-            '{{ route('ngvControl.list.myList') }}', function(res){
-                console.log(res);
 
-            }
-        )
         create_datatable(
             'my-list',
             '{{ route('ngvControl.list.myList') }}',
@@ -66,5 +62,19 @@
                 }}
             ]
         )
+
+        function allData(){
+            var fd = new FormData();
+            fd.append('get_data', 'all');
+            send_ajax_formdata_request(
+                '{{ route('ngvControl.list.myList') }}',
+                fd,
+                function(response){
+                    console.log(response);
+
+                    update_datatable(response.data)
+                }
+            )
+        }
     </script>
 @endsection
