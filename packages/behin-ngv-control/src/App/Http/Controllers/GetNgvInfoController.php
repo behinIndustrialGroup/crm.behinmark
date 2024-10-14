@@ -29,7 +29,10 @@ class GetNgvInfoController extends Controller
             $query->whereIn('workshop_id', $myWorkshopIds);
             $query->orWhere('registeror_user_id', $user->id);
         });
-        if($user->role_id == 1){
+        if($request->get_data == 'all'){
+            $rows = $rows->get();
+        }
+        elseif($user->role_id == 1){
             // As an Admin
             $rows = NgvInfo::get();
         }
