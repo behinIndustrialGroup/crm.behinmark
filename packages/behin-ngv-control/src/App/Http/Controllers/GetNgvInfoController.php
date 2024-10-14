@@ -38,7 +38,14 @@ class GetNgvInfoController extends Controller
         }
         elseif($user->role_id == 2){
             // As a Supervisor
-            $rows = $rows->where('supervisor_approval', 0)->get();
+            $rows = $rows->where(function($query) use($user){
+                $query->where('supervisor_approval', 0);
+                $query->orWhere(function($query) use($user){
+                    $query->where('registeror_user_id', $user->id);
+                    $query->where('registeror_approval', 0);
+                });
+            })->get();
+            // Log::info(vsprintf(str_replace('?', '%s', $rows->toSql()), $rows->getBindings()));
         }
         elseif($user->role_id == 4){
             // As a Workshop Manager
