@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use BehinInit\App\Http\Controllers\UniqueIDController;
 use BehinNgvControl\App\Models\NgvInfo;
 use BehinNgvWorkshopControl\App\Http\Controllers\GetWorkshopController;
+use BehinUserRoles\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -22,19 +23,46 @@ class GetNgvInfoController extends Controller
 
     public static function getMyList(Request $request)
     {
+        $user = User::find(Auth::id());
         $myWorkshopIds = GetWorkshopController::getMyWorkshopIds()->pluck('id');
-        $rows = NgvInfo::whereIn('workshop_id', $myWorkshopIds)
-            ->orWhere('registeror_user_id', Auth::id())
-            ->get()->each(function ($row) {
+        $rows = NgvInfo::where(function($query) use ($myWorkshopIds, $user){
+            $query->whereIn('workshop_id', $myWorkshopIds);
+            $query->orWhere('registeror_user_id', $user->id);
+        });
+        if($user->role_id === 1){
+            // As an Admin
+        }
+        elseif($user->role_id === 2){
+            // As a Supervisor
+            $rows = $rows->where('supervisor_approval', 0);
+        }
+        elseif($user->role_id === 3){
+            // As a Workshop Manager
+            $rows = $rows->where('workshop_manager_approval', 0);
+
+        }
+        elseif($user->role_id === 4){
+            // As an Operator
+            $rows = $rows->where('registeror_approval', 0);
+        }else{
+            return [
+                'data' => []
+            ];
+        }
+        $rows = $rows->get()->each(function ($row) {
                 $workshop = $row->workshop();
-                if($workshop->workshop_supervisor_user_id == Auth::id()){
-                    $row->role = 'Supervisor';
-                    $row->in_progress = !$row->supervisor_approval;
-                }
-                if($workshop->workshop_manager_user_id == Auth::id()){
-                    $row->role = 'Workshop Manager';
-                    $row->in_progress = !$row->workshop_manager_approval;
-                }
+                // if($workshop->registeror_user_id == Auth::id()){
+                //     $row->role = 'Operator';
+                //     $row->in_progress = !$row->registeror_approval;
+                // }
+                // if($workshop->workshop_supervisor_user_id == Auth::id()){
+                //     $row->role = 'Supervisor';
+                //     $row->in_progress = !$row->supervisor_approval;
+                // }
+                // if($workshop->workshop_manager_user_id == Auth::id()){
+                //     $row->role = 'Workshop Manager';
+                //     $row->in_progress = !$row->workshop_manager_approval;
+                // }
                 $row->status = self::getNgvInfoStatus($row);
                 $row->registeror = $row->registeror();
                 $row->workshop = $workshop;

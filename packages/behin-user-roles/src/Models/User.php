@@ -70,8 +70,12 @@ class User extends Authenticatable
         return false;
     }
 
-    function access($method_name) {
-        return (new AccessController($method_name))->check();
+    // function access($method_name) {
+    //     return (new AccessController($method_name))->check();
+    // }
+
+    function role(){
+        return Role::find($this->id);
     }
 
 }

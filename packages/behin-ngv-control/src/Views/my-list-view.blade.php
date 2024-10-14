@@ -61,8 +61,7 @@
                     url = '{{ route("ngvControl.registerForm" ) }}';
                     url = url + '/' + data;
                     return `<a href='${url}' target='_blank'>
-                        Show <br>
-                        as ${row.role}
+                        Show
                         </a>`;
                 }}
             ]
